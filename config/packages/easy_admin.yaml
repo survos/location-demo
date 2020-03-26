@@ -1,0 +1,11 @@
+easy_admin:
+
+    design:
+        menu:
+            - { label: 'Dashboard', route: 'app_homepage', icon: dashboard }
+            - { entity: Location, icon: 'fas fa-map-marker' }
+
+
+    entities:
+        Location:
+            class: App\Entity\Location

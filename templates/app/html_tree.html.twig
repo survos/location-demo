@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ _self }}{% endblock %}
+
+{% block body %}
+
+        <h1>HTML Location Tree </h1>
+        <div id="jstree">
+        <ul>
+            {% for root in rootNodes %}
+            <li> {{ root.name }}
+                <ul>
+                {% for child in root.children %}
+                    <li>{{ child.name }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+
+        </div>
+{% endblock %}
