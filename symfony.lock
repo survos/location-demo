@@ -31,6 +31,9 @@
     "behat/transliterator": {
         "version": "v1.3.0"
     },
+    "bordeux/geoname-bundle": {
+        "version": "1.0.x-dev"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -659,10 +662,16 @@
     "symfony/yaml": {
         "version": "v5.0.5"
     },
+    "tetranz/select2entity-bundle": {
+        "version": "v3.0.0"
+    },
     "twig/extra-bundle": {
         "version": "v3.0.3"
     },
     "twig/intl-extra": {
+        "version": "v3.0.3"
+    },
+    "twig/string-extra": {
         "version": "v3.0.3"
     },
     "twig/twig": {

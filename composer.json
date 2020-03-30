@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "antishov/doctrine-extensions-bundle": "^1.4",
+        "bordeux/geoname-bundle": "dev-symfony5",
         "api-platform/api-pack": "^1.2",
         "easycorp/easyadmin-bundle": "^2.3",
         "sensio/framework-extra-bundle": "^5.1",
@@ -32,7 +33,9 @@
         "symfony/validator": "5.0.*",
         "symfony/web-link": "5.0.*",
         "symfony/yaml": "5.0.*",
-        "twig/intl-extra": "^3.0"
+        "tetranz/select2entity-bundle": "^3.0",
+        "twig/intl-extra": "^3.0",
+        "twig/string-extra": "^3.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
@@ -85,6 +88,12 @@
         "symfony": {
             "allow-contrib": false,
             "require": "5.0.*"
+        }
+    },
+    "repositories": {
+        "geonames": {
+            "type": "path",
+            "url": "../Survos/geoname-bundle"
         }
     }
 }

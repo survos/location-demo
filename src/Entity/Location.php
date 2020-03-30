@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -9,11 +10,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LocationRepository")
  * @Gedmo\Tree(type="nested")
+ * @ApiResource()
  */
 class Location
 {
 
-    public function __construct($code, $name)
+    public function __construct($code=null, $name=null)
     {
         $this->code = $code;
         $this->name = $name;

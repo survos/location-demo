@@ -1,11 +1,62 @@
 easy_admin:
 
+    disabled_actions: ['delete', 'edit']
+    list:
+        actions: ['show']
     design:
         menu:
             - { label: 'Dashboard', route: 'app_homepage', icon: dashboard }
             - { entity: Location, icon: 'fas fa-map-marker' }
+            - { entity: City, icon: 'fas fa-map-marker-alt' }
 
+            - { entity: Administrative, icon: 'fas fa-map-marker' }
+            - { entity: Country, icon: 'fas fa-map-marker' }
+            - { entity: GeoName, icon: 'fas fa-map-marker' }
+            - { entity: Geo_V, icon: 'fas fa-map-marker' }
+            - { entity: Geo_Admin, icon: 'fas fa-map-marker' }
+            - { entity: Geo_Admin1, icon: 'fas fa-map-marker' }
+            - { entity: Geo_Admin2, icon: 'fas fa-map-marker' }
+            - { entity: Geo_Admin3, icon: 'fas fa-map-marker' }
 
     entities:
         Location:
             class: App\Entity\Location
+        City:
+            class: App\Entity\City
+
+        Administrative:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\Administrative
+
+        Country:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\Country
+
+        GeoName:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            list:
+                filters: ['asciiName', 'featureClass', 'featureCode']
+
+
+        Geo_Admin:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            list:
+                dql_filter: "entity.featureClass = 'A'"
+        Geo_V:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            list:
+                dql_filter: "entity.featureClass = 'V'"
+                # you can also use container parameters inside the filters
+                # dql_filter: 'entity.budget <= %customers.budget_threshold%'
+        Geo_Admin1:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            list:
+                dql_filter: "entity.featureCode = 'ADM1'"
+        Geo_Admin2:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            list:
+                dql_filter: "entity.featureCode = 'ADM2'"
+        Geo_Admin3:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            list:
+                dql_filter: "entity.featureCode = 'ADM3'"
+                # you can also use container parameters inside the filters
+                # dql_filter: 'entity.budget <= %customers.budget_threshold%'
