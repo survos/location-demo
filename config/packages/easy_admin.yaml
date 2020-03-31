@@ -8,6 +8,7 @@ easy_admin:
             - { label: 'Dashboard', route: 'app_homepage', icon: dashboard }
             - { entity: Location, icon: 'fas fa-map-marker' }
             - { entity: City, icon: 'fas fa-map-marker-alt' }
+            - { entity: Timezone, icon: 'fas fa-clock' }
 
             - { entity: Administrative, icon: 'fas fa-map-marker' }
             - { entity: Country, icon: 'fas fa-map-marker' }
@@ -29,6 +30,9 @@ easy_admin:
 
         Country:
             class: Bordeux\Bundle\GeoNameBundle\Entity\Country
+
+        Timezone:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\Timezone
 
         GeoName:
             class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
