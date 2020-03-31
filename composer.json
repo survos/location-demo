@@ -6,7 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "antishov/doctrine-extensions-bundle": "^1.4",
-        "bordeux/geoname-bundle": "dev-symfony5",
+        "bordeux/geoname-bundle": "dev-easyadmin",
         "api-platform/api-pack": "^1.2",
         "easycorp/easyadmin-bundle": "^2.3",
         "sensio/framework-extra-bundle": "^5.1",
@@ -93,7 +93,11 @@
     "repositories": {
         "geonames": {
             "type": "path",
-            "url": "../Survos/geoname-bundle"
+            "url": "../Survos/geoname-bundleXX"
+        },
+        "git-geonames": {
+            "type": "vcs",
+            "url": "https://github.com/survos/geoname-bundle.git"
         }
     }
 }

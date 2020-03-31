@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6485a93d4260b3c899dbe91f3c9508f1",
+    "content-hash": "86e416529f03a65b37594abea86632bb",
     "packages": [
         {
             "name": "antishov/doctrine-extensions-bundle",
@@ -313,11 +313,17 @@
         },
         {
             "name": "bordeux/geoname-bundle",
-            "version": "dev-symfony5",
+            "version": "dev-easyadmin",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/geoname-bundle.git",
+                "reference": "8ce19bf787b66c9584c5aee853392c98788ce875"
+            },
             "dist": {
-                "type": "path",
-                "url": "../Survos/geoname-bundle",
-                "reference": "59fb9b964412c86342cfc05684a0dd53b108a844"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/geoname-bundle/zipball/8ce19bf787b66c9584c5aee853392c98788ce875",
+                "reference": "8ce19bf787b66c9584c5aee853392c98788ce875",
+                "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": ">=1.6",
@@ -359,7 +365,11 @@
             "keywords": [
                 "geoname",
                 "geonameid"
-            ]
+            ],
+            "support": {
+                "source": "https://github.com/survos/geoname-bundle/tree/easyadmin"
+            },
+            "time": "2020-03-31T18:22:06+00:00"
         },
         {
             "name": "doctrine/annotations",
