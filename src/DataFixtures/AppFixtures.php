@@ -77,8 +77,9 @@ class AppFixtures extends Fixture
 
         // now that we have the names loaded into the arrays, we can use them for lookups
 
-        // https://datahub.io/core/world-cities or https://simplemaps.com/data/us-cities
-        $json = file_get_contents(__DIR__ . '/../../public/world-cities.json');
+        $fn = 'https://datahub.io/core/world-cities or https://simplemaps.com/data/us-cities';
+        // $fn = __DIR__ . '/../../public/world-cities.json'; @todo: check for this (cache)
+        $json = file_get_contents($fn);
         $data = json_decode($json);
 
         foreach ($data as $idx => $cityData) {
