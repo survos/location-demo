@@ -13,6 +13,7 @@ class MenuBuilder extends LandingMenuBuilder
 
 $menu->setChildrenAttribute('class', 'nav navbar-nav mr-auto');
 
+$menu->addChild('easyadmin', ['route' => 'easyadmin'])->setAttribute('icon', 'fas fa-database');
 $menu->addChild('survos_landing', ['route' => 'app_homepage'])->setAttribute('icon', 'fas fa-home');
 $menu->addChild('article_index', ['route' => 'article_index'])->setAttribute('icon', 'fas fa-list');
 $menu->addChild('article_new', ['route' => 'article_new'])->setAttribute('icon', 'fas fa-plus');
