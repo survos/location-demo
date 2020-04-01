@@ -79,6 +79,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "compile": [
+            "php bin/console bordeux:geoname:import -a http://download.geonames.org/export/dump/CA.zip --no-debug"
         ]
     },
     "conflict": {
@@ -91,10 +94,6 @@
         }
     },
     "repositories": {
-        "geonames": {
-            "type": "path",
-            "url": "../Survos/geoname-bundleXX"
-        },
         "git-geonames": {
             "type": "vcs",
             "url": "https://github.com/survos/geoname-bundle.git"
