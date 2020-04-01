@@ -88,8 +88,8 @@
             "php bin/console doctrine:fixtures:load -n",
             "php bin/console bordeux:geoname:import --help -a http://download.geonames.org/export/dump/CA.zip --no-debug"
         ],
-        "compileXX": [
-            "wget https://museo.survos.com.s3.amazonaws.com/loc.db.zip --no-check-certificate -o -O loc.db.zip",
+        "compile": [
+            "wget https://museo.survos.com.s3.amazonaws.com/loc.db.zip --no-check-certificate",
             "unzip loc.db.zip"
         ]
     },
