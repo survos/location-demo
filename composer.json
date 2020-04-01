@@ -38,12 +38,10 @@
         "symfony/yaml": "5.0.*",
         "tetranz/select2entity-bundle": "^3.0",
         "twig/intl-extra": "^3.0",
-
-        "doctrine/doctrine-fixtures-bundle": "^3.3",
-
         "twig/string-extra": "^3.0"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",
@@ -90,7 +88,7 @@
             "php bin/console doctrine:fixtures:load -n",
             "php bin/console bordeux:geoname:import --help -a http://download.geonames.org/export/dump/CA.zip --no-debug"
         ],
-        "compile": [
+        "compileXX": [
             "wget https://museo.survos.com.s3.amazonaws.com/loc.db.zip --no-check-certificate -o -O loc.db.zip",
             "unzip loc.db.zip"
         ]
