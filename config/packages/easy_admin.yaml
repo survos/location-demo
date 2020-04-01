@@ -9,6 +9,7 @@ easy_admin:
             - { entity: Location, icon: 'fas fa-map-marker' }
             - { entity: City, icon: 'fas fa-map-marker-alt' }
             - { entity: Timezone, icon: 'fas fa-clock' }
+            - { entity: SurvosCountry, icon: 'fas fa-map-marker' }
 
             - { entity: Administrative, icon: 'fas fa-map-marker' }
             - { entity: Country, icon: 'fas fa-map-marker' }
@@ -24,6 +25,9 @@ easy_admin:
             class: App\Entity\Location
         City:
             class: App\Entity\City
+
+        SurvosCountry:
+            class: App\Entity\Country
 
         Administrative:
             class: Bordeux\Bundle\GeoNameBundle\Entity\Administrative

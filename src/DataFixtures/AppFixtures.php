@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\City;
+use App\Entity\Country;
 use App\Entity\Location;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -22,8 +23,10 @@ class AppFixtures extends Fixture
         $this->output = new ConsoleOutput();
         $this->manager = $manager;
 
-        $this->loadIso3166();
+        $this->loadCountries();
+        $manager->flush();
 
+        $this->loadIso3166();
         $manager->flush();
     }
 
@@ -39,8 +42,18 @@ class AppFixtures extends Fixture
                 ->setCode($alpha2)
                 ->setAlpha2($alpha2);
             $this->manager->persist($country);
+
+            // our Country
+            $country = new Country();
+            $country
+                ->setName($name)
+                ->setCode($alpha2)
+                ->setAlpha2($alpha2);
+            $this->manager->persist($country);
+
         }
         $this->manager->flush();
+        $this->output->writeln(sprintf("%d countries loaded into Location", $this->manager->getRepository(Location::class)->count([])));
     }
 
     private function loadIso3166()
