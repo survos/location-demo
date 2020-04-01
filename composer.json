@@ -84,6 +84,7 @@
             "@auto-scripts"
         ],
         "compile": [
+            "php bin/console doctrine:schema:update --dump-sql --force",
             "php bin/console bordeux:geoname:import -a http://download.geonames.org/export/dump/CA.zip --no-debug"
         ]
     },
