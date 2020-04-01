@@ -73,11 +73,11 @@ class AppFixtures extends Fixture
         $this->manager->flush(); // set the IDs
 
         dump(array_keys($regions));
-        dump($regions['United States']);
+       // dump($regions['United States']);
 
         // now that we have the names loaded into the arrays, we can use them for lookups
 
-        $fn = 'https://datahub.io/core/world-cities or https://simplemaps.com/data/us-cities';
+        $fn = 'https://datahub.io/core/world-cities/r/world-cities.json'; //  or https://simplemaps.com/data/us-cities';
         // $fn = __DIR__ . '/../../public/world-cities.json'; @todo: check for this (cache)
         $json = file_get_contents($fn);
         $data = json_decode($json);
@@ -109,10 +109,6 @@ class AppFixtures extends Fixture
             // $this->manager->flush();
         }
         $this->manager->flush();
-
-
-
-
     }
 
 }
