@@ -6,30 +6,27 @@ easy_admin:
     design:
         menu:
             - { label: 'Dashboard', route: 'app_homepage', icon: dashboard }
-            - { entity: Location, icon: 'fas fa-map-marker' }
-            - { entity: City, icon: 'fas fa-map-marker-alt' }
-            - { entity: Timezone, icon: 'fas fa-clock' }
             - { entity: SurvosCountry, icon: 'fas fa-map-marker' }
 
+#            - { entity: Hierarchy, icon: 'fas fa-tree' }
             - { entity: Administrative, icon: 'fas fa-map-marker' }
+
             - { entity: Country, icon: 'fas fa-map-marker' }
-            - { entity: GeoName, icon: 'fas fa-map-marker' }
-            - { entity: Geo_V, icon: 'fas fa-map-marker' }
-            - { entity: Geo_Admin, icon: 'fas fa-map-marker' }
-            - { entity: Geo_Admin1, icon: 'fas fa-map-marker' }
-            - { entity: Geo_Admin2, icon: 'fas fa-map-marker' }
-            - { entity: Geo_Admin3, icon: 'fas fa-map-marker' }
+
+            - { entity: Geoname_All, icon: 'fas fa-map-marker' }
+
+            - { label: "Geoname, by featureCode", icon: 'fas fa-map-marker',children: [Geo_Admin1, Geo_Admin2, Geo_Admin3, Geo_PCLI] }
+            - { label: "Geoname, by Feature", icon: 'fas fa-map-marker',children: [Geoname_Feature_A, Geoname_Feature_V] }
+
+            - { entity: Location, icon: 'fas fa-map-marker' }
+            - { entity: City, icon: 'fas fa-map-marker-alt' }
 
     entities:
-        Location:
-            class: App\Entity\Location
-        City:
-            class: App\Entity\City
-
-        SurvosCountry:
-            class: App\Entity\Country
-
         Administrative:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\Administrative
+#            class: Geonames\Entity\Administrative
+
+        Bordeux_Administrative:
             class: Bordeux\Bundle\GeoNameBundle\Entity\Administrative
 
         Country:
@@ -38,22 +35,24 @@ easy_admin:
         Timezone:
             class: Bordeux\Bundle\GeoNameBundle\Entity\Timezone
 
-        GeoName:
+        Geoname_All:
             class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
             list:
                 filters: ['asciiName', 'featureClass', 'featureCode']
+                fields: ['id', 'name', 'admin1', 'admin2', 'featureClass', 'featureCode', 'countryCode', 'administrativeCode' ]
 
-
-        Geo_Admin:
+        Geoname_Feature_A:
             class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureClass = 'A'"
-        Geo_V:
+        Geoname_Feature_V:
             class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureClass = 'V'"
                 # you can also use container parameters inside the filters
                 # dql_filter: 'entity.budget <= %customers.budget_threshold%'
+
+
         Geo_Admin1:
             class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
             list:
@@ -66,5 +65,32 @@ easy_admin:
             class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureCode = 'ADM3'"
+        Geo_PCLI:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            list:
+                dql_filter: "entity.featureCode = 'PCLI'"
+
+
+        Location:
+            class: App\Entity\Location
+            label: SurvosLocation
+        City:
+            class: App\Entity\City
+
+        SurvosCountry:
+            class: App\Entity\Country
+
+        Hierarchy:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\Hierarchy
+
+
+        Geo_Admin:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            list:
+                dql_filter: "entity.featureClass = 'A'"
+        Geo_V:
+            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            list:
+                dql_filter: "entity.featureClass = 'V'"
                 # you can also use container parameters inside the filters
                 # dql_filter: 'entity.budget <= %customers.budget_threshold%'

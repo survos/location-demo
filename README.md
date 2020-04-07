@@ -1,4 +1,4 @@
-# select2entity-bundle-demo
+# location-demo
 Demo for select2entity-bundle (https://github.com/tetranz/select2entity-bundle).  It shows various ways to select a country or countries from a jquery-select2 input element.
 
 See this in action on heroku, at 
