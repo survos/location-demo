@@ -39,7 +39,7 @@ easy_admin:
             class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
             list:
                 filters: ['asciiName', 'featureClass', 'featureCode']
-                fields: ['id', 'name', 'admin1', 'admin2', 'featureClass', 'featureCode', 'countryCode', 'administrativeCode' ]
+                fields: ['id', 'name', 'admin1', 'admin2', 'admin3','admin4', 'featureClass', 'featureCode', 'countryCode', 'administrativeCode' ]
 
         Geoname_Feature_A:
             class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName

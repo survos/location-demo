@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Article;
 use App\Entity\Location;
+use Bordeux\Bundle\GeoNameBundle\Entity\GeoName;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -66,8 +67,8 @@ class ArticleType extends AbstractType
                 'multiple' => true,
                 'remote_route' => 'location_json',
                 'remote_params' => ['lvl' => 0],
-                'class' => Location::class,
-                'primary_key' => 'code',
+                'class' => GeoName::class,
+                'primary_key' => 'id',
                 'text_property' => 'name',
                 'minimum_input_length' => 1,
                 'page_limit' => 10,

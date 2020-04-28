@@ -48,12 +48,12 @@ class AppController extends AbstractController
      */
     public function locationJson(Request $request) {
 
-        $repo = $this->getDoctrine()->getRepository(Location::class);
+        $repo = $this->getDoctrine()->getRepository(GeoName::class);
         /** @var QueryBuilder $qb */
         $qb = $repo->createQueryBuilder('l');
 
         $lvl = $request->get('lvl');
-        if (is_numeric($lvl)) {
+        if (0 && is_numeric($lvl)) {
             $qb->andWhere('l.lvl = :lvl')
                 ->setParameter('lvl', $lvl);
         }
@@ -71,7 +71,7 @@ class AppController extends AbstractController
         $data = [];
         foreach ($locations as $location) {
             $data[] = [
-                'id' => $location->getCode(),
+                'id' => $location->getId(),
                 'text' => $location->getName()
             ];
         }
