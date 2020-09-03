@@ -43,7 +43,6 @@ In this case, we're going to use the fancy Doctrine Tree extension.  We'll also 
     composer req twig/intl-extra
     composer require orm-fixtures --dev     
 
-
     # make the entity / repo
     bin/console make:entity Location
        # name, string, 55, no (not nullable)
@@ -308,7 +307,7 @@ The autocomplete ajax call is a simple query, using the repository created in ma
     }
 ```
 
-Of course, you need a route to land on, then you'll instanciate the form and send it to be rendered in a twig template.  
+Of course, you need a route to land on, then you'll instantiate the form and send it to be rendered in a twig template.  
 
 ```php
 // add to AppController.php
