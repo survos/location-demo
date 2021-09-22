@@ -1,0 +1,16 @@
+{% extends "@theme/base.html.twig" %}
+
+{% block logo_mini 'AS' %}
+{% block logo_large 'Anki Subtitles' %}
+
+{% block navbar_notifications '' %}
+
+                {% block sidebar_cta %}
+                    <strong class="d-inline-block mb-2">Sample Data</strong>
+                    <div class="mb-3 text-sm">
+                        Checkout the available subtitles!
+                    </div>
+                    <a href="https://www.opensubtitles.org/en/search/subs" target="_blank"
+                       class="btn btn-primary btn-block">
+                        opensubtitles.org</a>
+                {% endblock %}
