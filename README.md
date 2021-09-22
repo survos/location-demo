@@ -8,7 +8,7 @@ See this in action on heroku, at
 ### Requirements
 
 * composer
-* PHP 7.3+
+* PHP 8.0+
 * yarn
 * Symfony Server (to follow along with this tutorial)
 

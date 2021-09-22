@@ -1,29 +1,14 @@
-services:
-  survos.landing_menu_builder:
-    class: Survos\LandingBundle\Menu\LandingMenuBuilder
-    arguments:
-      - "@knp_menu.factory"
-      - "@security.authorization_checker"
-      - "@security.token_storage"
-      - "@knpu.oauth2.registry"
-    tags:
-      #      - { name: knp_menu.menu_builder, method: createMainMenu, alias: landing_menu } # The alias is what is used to retrieve the menu
-      - { name: knp_menu.menu_builder, method: createSocialMenu, alias: social_menu }
-      - { name: knp_menu.menu_builder, method: createTestMenu, alias: landing_menu }
-      - { name: knp_menu.menu_builder, method: createAuthMenu, alias: auth_menu }
-
-  app.menu_builder:
-    class: App\Menu\MenuBuilder
-    arguments:
-      - "@knp_menu.factory"
-      - "@security.authorization_checker"
-      - "@security.token_storage"
-      - "@knpu.oauth2.registry"
-    tags:
-      - { name: knp_menu.menu_builder, method: createMainMenu, alias: landing_menu }
-      - { name: knp_menu.menu_builder, method: createTestMenu, alias: landing_content_menu }
+survos_base:
+  theme: adminlte
+#  theme: start-bootstrap
+#  menu:
+#    enable: true
+#    main_menu: survos_sidebar_menu
+#    breadcrumb_menu: true
+#
 
 twig:
   globals:
-    landing_menu_route: landing_menu
-    landing_content_menu_route: landing_menu
+    theme: adminlte
+  paths:
+    'vendor/survos/base-bundle/src/Resources/views/adminlte': 'theme'
