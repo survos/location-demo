@@ -1,7 +1,9 @@
 const $ = require('jquery');
+window.jQuery = window.$ = global.jQuery = global.$ = $;
 
 require('bootstrap');
-const Popper = require('popper.js');
+require('@popperjs/core');
+require('../../vendor/survos/base-bundle/src/Resources/assets/js/adminlte');
 
 require('select2'); // base library, not select2entity
 

@@ -177,6 +177,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "knplabs/knp-markdown-bundle": {
+        "version": "1.9.0"
+    },
     "knplabs/knp-menu": {
         "version": "v3.1.0"
     },
@@ -209,6 +212,9 @@
     },
     "meyfa/php-svg": {
         "version": "v0.9.1"
+    },
+    "michelf/php-markdown": {
+        "version": "1.9.0"
     },
     "mindscreen/yarnlock": {
         "version": "v1.0.1"

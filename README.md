@@ -348,7 +348,7 @@ Initialize heroku and add a database
 Add node to buildpack
 
     heroku buildpacks:add heroku/nodejs
-    git push heroku master  
+    git push heroku main
     
 Add Sentry to make your life easier!
 

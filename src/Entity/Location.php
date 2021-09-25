@@ -9,16 +9,21 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LocationRepository")
+ * @ORM\Table(indexes={
+ *     @ORM\Index(name="location_name_idx", columns={"name"}),
+ *     @ORM\Index(name="location_lvl_idex", columns={"lvl"})
+ * })
  * @Gedmo\Tree(type="nested")
  * @ApiResource()
  */
 class Location
 {
 
-    public function __construct($code=null, $name=null)
+    public function __construct($code=null, $name=null, int $lvl=null)
     {
         $this->code = $code;
         $this->name = $name;
+        $this->lvl = $lvl;
     }
 
     /**
@@ -101,7 +106,7 @@ class Location
     /**
      * @return mixed
      */
-    public function getParent()
+    public function getParent(): ?Location
     {
         return $this->parent;
     }
@@ -110,7 +115,7 @@ class Location
      * @param mixed $parent
      * @return Location
      */
-    public function setParent($parent)
+    public function setParent(?Location $parent): self
     {
         $this->parent = $parent;
         return $this;
@@ -137,7 +142,7 @@ class Location
     /**
      * @return mixed
      */
-    public function getLvl()
+    public function getLvl(): int
     {
         return $this->lvl;
     }
@@ -174,14 +179,14 @@ class Location
 
     /**
      * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="Location", inversedBy="children", cascade={"persist"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Location", inversedBy="children", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $parent;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Location", mappedBy="parent", cascade={"persist", "remove"}, fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="Location", mappedBy="parent", cascade={"persist", "remove"}, fetch="LAZY")
      */
     private $children;
 

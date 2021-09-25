@@ -44,6 +44,7 @@ class ArticleType extends AbstractType
 
         $builder
             ->add('filter', Select2EntityType::class, [
+                'label' => Location::class,
                 'mapped' => false,
                 'multiple' => false,
                 'remote_route' => 'location_json',
@@ -63,12 +64,14 @@ class ArticleType extends AbstractType
         ]);
 
         $builder
-            ->add('locations', Select2EntityType::class, [
+            ->add('states', Select2EntityType::class, [
+                'label' => 'States (lvl 1)',
+                'mapped' => true,
                 'multiple' => true,
                 'remote_route' => 'location_json',
-                'remote_params' => ['lvl' => 0],
-                'class' => GeoName::class,
-                'primary_key' => 'id',
+                'remote_params' => ['lvl' => 1],
+                'class' => Location::class,
+                'primary_key' => 'code',
                 'text_property' => 'name',
                 'minimum_input_length' => 1,
                 'page_limit' => 10,
@@ -78,16 +81,35 @@ class ArticleType extends AbstractType
                 'transformer' => SelectTagsTransformer::class,
                 'cache_timeout' => 60000, // if 'cache' is true
                 'language' => 'en',
-                'placeholder' => 'Select locations',
-                /*
-                'query_parameters' => [
-                    'start' => new \DateTime(),
-                    'end' => (new \DateTime())->modify('+5d'),
-                    // any other parameters you want your ajax route request->query to get, that you might want to modify dynamically
-                ],
-                */
-                // 'object_manager' => $objectManager, // inject a custom object / entity manager
+                'placeholder' => 'FILTER!',
             ]);
+
+        //        $builder
+//            ->add('locations', Select2EntityType::class, [
+//                'multiple' => true,
+//                'remote_route' => 'location_json',
+//                'remote_params' => ['lvl' => 0],
+//                'class' => GeoName::class,
+//                'primary_key' => 'id',
+//                'text_property' => 'name',
+//                'minimum_input_length' => 1,
+//                'page_limit' => 10,
+//                'allow_clear' => true,
+//                'delay' => 150,
+//                'cache' => true,
+//                'transformer' => SelectTagsTransformer::class,
+//                'cache_timeout' => 60000, // if 'cache' is true
+//                'language' => 'en',
+//                'placeholder' => 'Select locations',
+//                /*
+//                'query_parameters' => [
+//                    'start' => new \DateTime(),
+//                    'end' => (new \DateTime())->modify('+5d'),
+//                    // any other parameters you want your ajax route request->query to get, that you might want to modify dynamically
+//                ],
+//                */
+//                // 'object_manager' => $objectManager, // inject a custom object / entity manager
+//            ]);
 
 
     }

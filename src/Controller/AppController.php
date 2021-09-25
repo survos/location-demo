@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Location;
 use Bordeux\Bundle\GeoNameBundle\Entity\GeoName;
 use Doctrine\ORM\QueryBuilder;
+use Survos\BaseBundle\Traits\JsonResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AppController extends AbstractController
 {
+    use JsonResponseTrait;
     /**
      * @Route("/", name="app_homepage")
      */
@@ -29,7 +31,7 @@ class AppController extends AbstractController
     public function htmlTree()
     {
         $treeRepository = $this->getDoctrine()->getRepository(Location::class);
-        $rootNodes = $treeRepository->findBy(['lvl' => 0]);
+        $rootNodes = $treeRepository->findBy(['lvl' => 0], [], 30);
         return $this->render('app/html_tree.html.twig', [
 
             'rootNodes' => $rootNodes,
@@ -44,16 +46,16 @@ class AppController extends AbstractController
     }
 
         /**
-     * @Route("/location-json", name="location_json")
+     * @Route("/location-json.{_format}", name="location_json", defaults={"_format"="html"})
      */
     public function locationJson(Request $request) {
 
-        $repo = $this->getDoctrine()->getRepository(GeoName::class);
+        $repo = $this->getDoctrine()->getRepository(Location::class);
         /** @var QueryBuilder $qb */
         $qb = $repo->createQueryBuilder('l');
 
-        $lvl = $request->get('lvl');
-        if (0 && is_numeric($lvl)) {
+        $lvl = $request->get('lvl', null);
+        if (false && is_numeric($lvl)) {
             $qb->andWhere('l.lvl = :lvl')
                 ->setParameter('lvl', $lvl);
         }
@@ -69,14 +71,17 @@ class AppController extends AbstractController
 
         $locations = $qb->getQuery()->getResult();
         $data = [];
+        /** @var Location $location */
         foreach ($locations as $location) {
             $data[] = [
                 'id' => $location->getId(),
-                'text' => $location->getName()
+                'text' => sprintf("%s (%s) / %d",
+                    $location->getName(), $location->getParent() ? $location->getParent()->getCode(): '~', $location->getLvl()
+                )
             ];
         }
 
-        return new JsonResponse($data);
+        return $this->jsonResponse($data, $request);
     }
 
 
