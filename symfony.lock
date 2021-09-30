@@ -270,6 +270,9 @@
     "phpspec/prophecy": {
         "version": "1.14.0"
     },
+    "phpstan/phpstan": {
+        "version": "0.12.99"
+    },
     "phpunit/php-code-coverage": {
         "version": "9.2.7"
     },
@@ -319,6 +322,9 @@
     },
     "ralouphie/getallheaders": {
         "version": "3.0.3"
+    },
+    "rector/rector": {
+        "version": "0.11.56"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
