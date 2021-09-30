@@ -31,6 +31,7 @@ class ArticleController extends AbstractController
     public function new(Request $request): Response
     {
         $article = new Article();
+        $article->setCountries(['AB', 'CA']);
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 

@@ -55,7 +55,7 @@ class AppController extends AbstractController
         $qb = $repo->createQueryBuilder('l');
 
         $lvl = $request->get('lvl', null);
-        if (false && is_numeric($lvl)) {
+        if (is_numeric($lvl)) {
             $qb->andWhere('l.lvl = :lvl')
                 ->setParameter('lvl', $lvl);
         }
@@ -74,9 +74,9 @@ class AppController extends AbstractController
         /** @var Location $location */
         foreach ($locations as $location) {
             $data[] = [
-                'id' => $location->getId(),
-                'text' => sprintf("%s (%s) / %d",
-                    $location->getName(), $location->getParent() ? $location->getParent()->getCode(): '~', $location->getLvl()
+                'id' => $location->getCode(),
+                'text' => sprintf("%s (%s) / %d #%d",
+                    $location->getName(), $location->getParent() ? $location->getParent()->getCode(): '~', $location->getLvl(), $location->getId()
                 )
             ];
         }

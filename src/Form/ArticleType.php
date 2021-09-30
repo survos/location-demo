@@ -19,6 +19,9 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title');
+        if (0)
+            $builder
             ->add('title')
             ->add('locationScope', ChoiceType::class, [
                 'label' => 'Geographic Scope',
@@ -40,9 +43,6 @@ class ArticleType extends AbstractType
                 /*
 
                 */
-        ;
-
-        $builder
             ->add('filter', Select2EntityType::class, [
                 'label' => Location::class,
                 'mapped' => false,
@@ -52,24 +52,42 @@ class ArticleType extends AbstractType
                 'class' => Location::class,
                 'primary_key' => 'code',
                 'text_property' => 'name',
+
                 'minimum_input_length' => 1,
                 'page_limit' => 10,
                 'allow_clear' => true,
                 'delay' => 250,
                 'cache' => true,
-                'transformer' => SelectTagsTransformer::class,
+                'transformer' => SelectLocationsTransformer::class,
                 'cache_timeout' => 60000, // if 'cache' is true
                 'language' => 'en',
-                'placeholder' => 'FILTER!',
+                'placeholder' => 'Level 0, not mapped.',
         ]);
 
+            foreach (['countries' => 0, 'states' => 1, 'cities' => 2] as $var => $lvl) {
+                $builder
+                    ->add($var, Select2EntityType::class, [
+                            'remote_route' => 'location_json',
+                            'remote_params' => ['lvl' => $lvl],
+
+                            'transformer' => SelectLocationsTransformer::class,
+                            'class' => Location::class,
+
+                            'mapped' => true,
+                            'multiple' => true,
+                            'primary_key' => 'code', // Location::KEY?
+                            'text_property' => 'name',
+                        ]
+                    );
+            }
         $builder
             ->add('states', Select2EntityType::class, [
-                'label' => 'States (lvl 1)',
+                'label' => 'States (lvl 1) mapped.',
                 'mapped' => true,
                 'multiple' => true,
                 'remote_route' => 'location_json',
                 'remote_params' => ['lvl' => 1],
+
                 'class' => Location::class,
                 'primary_key' => 'code',
                 'text_property' => 'name',
@@ -81,7 +99,7 @@ class ArticleType extends AbstractType
                 'transformer' => SelectTagsTransformer::class,
                 'cache_timeout' => 60000, // if 'cache' is true
                 'language' => 'en',
-                'placeholder' => 'FILTER!',
+                'placeholder' => 'Level 1 locations',
             ]);
 
         //        $builder
