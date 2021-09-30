@@ -80,27 +80,27 @@ class ArticleType extends AbstractType
                         ]
                     );
             }
-        $builder
-            ->add('states', Select2EntityType::class, [
-                'label' => 'States (lvl 1) mapped.',
-                'mapped' => true,
-                'multiple' => true,
-                'remote_route' => 'location_json',
-                'remote_params' => ['lvl' => 1],
-
-                'class' => Location::class,
-                'primary_key' => 'code',
-                'text_property' => 'name',
-                'minimum_input_length' => 1,
-                'page_limit' => 10,
-                'allow_clear' => true,
-                'delay' => 250,
-                'cache' => true,
-                'transformer' => SelectTagsTransformer::class,
-                'cache_timeout' => 60000, // if 'cache' is true
-                'language' => 'en',
-                'placeholder' => 'Level 1 locations',
-            ]);
+//        $builder
+//            ->add('states', Select2EntityType::class, [
+//                'label' => 'States (lvl 1) mapped.',
+//                'mapped' => true,
+//                'multiple' => true,
+//                'remote_route' => 'location_json',
+//                'remote_params' => ['lvl' => 1],
+//
+//                'class' => Location::class,
+//                'primary_key' => 'code',
+//                'text_property' => 'name',
+//                'minimum_input_length' => 1,
+//                'page_limit' => 10,
+//                'allow_clear' => true,
+//                'delay' => 250,
+//                'cache' => true,
+//                'transformer' => SelectTagsTransformer::class,
+//                'cache_timeout' => 60000, // if 'cache' is true
+//                'language' => 'en',
+//                'placeholder' => 'Level 1 locations',
+//            ]);
 
         //        $builder
 //            ->add('locations', Select2EntityType::class, [

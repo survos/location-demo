@@ -3,6 +3,8 @@
 
 namespace App\Form;
 
+use App\Entity\Location;
+use Doctrine\Persistence\ObjectManager;
 use phpDocumentor\Reflection\Types\Parent_;
 use Tetranz\Select2EntityBundle\Form\DataTransformer\EntitiesToPropertyTransformer;
 
@@ -13,12 +15,23 @@ use Tetranz\Select2EntityBundle\Form\DataTransformer\EntitiesToPropertyTransform
  */
 class SelectLocationsTransformer extends EntitiesToPropertyTransformer
 {
-    public function transform($entities)
+    public function transform($entityCodes)
     {
+        // get all the valid Location entities, return the string
+        $entities = $this->em->getRepository($this->className)->findBy(['code' => $entityCodes]);
+        $result = [];
+        /** @var Location $entity */
+        foreach ($entities as $entity) {
+            $result[$entity->getCode()] = $entity->__toString();
+        }
+        return $result;
+
+
         $transformedEntities =  parent::transform($entities);
         if ($entities) {
-            dd($entities, $transformedEntities);
+//            dd($entities, $transformedEntities);
         }
+        return $transformedEntities;
     }
 
     /**
@@ -36,11 +49,11 @@ class SelectLocationsTransformer extends EntitiesToPropertyTransformer
         $values = array_filter($values, function($value) {
             return $value !== "";
         });
+        return $values; // keep the original array.
 
 
 //        $transformedValues = array_map(fn($entity) => $this->accessor->getValue($entity, $this->primaryKey), $values);
         $transformedValues =  parent::reverseTransform($values);
-        dd($values, $transformedValues);
         return $transformedValues;
     }
 

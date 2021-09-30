@@ -83,7 +83,8 @@ class Article
     public function setCountries(?array $countries): self
     {
         if ($countries) {
-            assert(!is_object($countries[0]), "needs an integer here");
+//            dd($countries);
+            assert(!is_object($countries[0]), "needs an non-object here");
         }
         $this->countries = $countries;
 
