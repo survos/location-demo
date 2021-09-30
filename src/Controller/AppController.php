@@ -59,10 +59,18 @@ class AppController extends AbstractController
             $qb->andWhere('l.lvl = :lvl')
                 ->setParameter('lvl', $lvl);
         }
+
+        // count the slashes to increase the level.  get parent
         if ($q = $request->get('q')) {
+            // us/nc us/north carolina
+            // us//chicago
+            // //chicago
+
+
             $qb->andWhere('l.name LIKE :q')
                 ->setParameter('q', $q . '%');
         }
+
         if ($parentCode = $request->get('parentCode')) {
             $parent = $repo->findBy(['code' => $parentCode]);
             $qb->andWhere('l.parent = :parent')
