@@ -10,7 +10,7 @@
         "ext-zip": "*",
         "antishov/doctrine-extensions-bundle": "^1.4",
         "api-platform/core": "^2.6",
-        "bordeux/geoname-bundle": "dev-easyadmin",
+        "bordeux/geoname-bundle": "dev-symfony5",
         "composer/package-versions-deprecated": "1.11.99.4",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.4",
