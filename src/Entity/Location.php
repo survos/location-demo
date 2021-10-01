@@ -19,7 +19,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Location
 {
 
-    public function __construct($code=null, $name=null, int $lvl=null)
+    public function __construct($code=null, $name=null, ?int $lvl=null)
     {
         $this->code = $code;
         $this->name = $name;
