@@ -15,20 +15,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class AppController extends AbstractController
 {
     use JsonResponseTrait;
-    /**
-     * @Route("/", name="app_homepage")
-     */
-    public function index()
+    #[Route(path: '/', name: 'app_homepage')]
+    public function index() : Response
     {
         return $this->render('app/index.html.twig', [
             'controller_name' => 'AppController',
         ]);
     }
 
-    /**
-     * @Route("/html-tree", name="app_html_tree")
-     */
-    public function htmlTree()
+    #[Route(path: '/html-tree', name: 'app_html_tree')]
+    public function htmlTree() : Response
     {
         $treeRepository = $this->getDoctrine()->getRepository(Location::class);
         $rootNodes = $treeRepository->findBy(['lvl' => 0], [], 30);
@@ -38,28 +34,23 @@ class AppController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/geoname/{id}", name="geoname_show")
-     */
-    public function geonameShow(Request $request, GeoName $geoName) {
+    #[Route(path: '/geoname/{id}', name: 'geoname_show')]
+    public function geonameShow(Request $request, GeoName $geoName) : void
+    {
         dd($geoName);
     }
 
-        /**
-     * @Route("/location-json.{_format}", name="location_json", defaults={"_format"="html"})
-     */
-    public function locationJson(Request $request) {
-
+        #[Route(path: '/location-json.{_format}', name: 'location_json', defaults: ['_format' => 'html'])]
+    public function locationJson(Request $request)
+    {
         $repo = $this->getDoctrine()->getRepository(Location::class);
         /** @var QueryBuilder $qb */
         $qb = $repo->createQueryBuilder('l');
-
         $lvl = $request->get('lvl', null);
         if (is_numeric($lvl)) {
             $qb->andWhere('l.lvl = :lvl')
                 ->setParameter('lvl', $lvl);
         }
-
         // count the slashes to increase the level.  get parent
         if ($q = $request->get('q')) {
             // us/nc us/north carolina
@@ -70,13 +61,11 @@ class AppController extends AbstractController
             $qb->andWhere('l.name LIKE :q')
                 ->setParameter('q', $q . '%');
         }
-
         if ($parentCode = $request->get('parentCode')) {
             $parent = $repo->findBy(['code' => $parentCode]);
             $qb->andWhere('l.parent = :parent')
                 ->setParameter('parent', $parent);
         }
-
         $locations = $qb->getQuery()->getResult();
         $data = [];
         /** @var Location $location */
@@ -84,11 +73,10 @@ class AppController extends AbstractController
             $data[] = [
                 'id' => $location->getCode(),
                 'text' => sprintf("%s (%s) / %d #%d",
-                    $location->getName(), $location->getParent() ? $location->getParent()->getCode(): '~', $location->getLvl(), $location->getId()
+                    $location->getName(), $location->getParent() !== null ? $location->getParent()->getCode(): '~', $location->getLvl(), $location->getId()
                 )
             ];
         }
-
         return $this->jsonResponse($data, $request);
     }
 
