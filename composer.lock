@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c54cc7396271016e00d533e669921d8",
+    "content-hash": "aa0631be3e7fed3436eec96b6143ede1",
     "packages": [
         {
             "name": "antishov/doctrine-extensions-bundle",
@@ -10461,16 +10461,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.11.57",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "e2239d52a1205ed0625f75f1c6cff3a57d4edc86"
+                "reference": "c6a9b6bdf0e69219b39aa558a97be347d2c87e0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/e2239d52a1205ed0625f75f1c6cff3a57d4edc86",
-                "reference": "e2239d52a1205ed0625f75f1c6cff3a57d4edc86",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/c6a9b6bdf0e69219b39aa558a97be347d2c87e0e",
+                "reference": "c6a9b6bdf0e69219b39aa558a97be347d2c87e0e",
                 "shasum": ""
             },
             "require": {
@@ -10482,11 +10482,14 @@
                 "phpstan/phpstan": "<=0.12.82",
                 "rector/rector-cakephp": "*",
                 "rector/rector-doctrine": "*",
+                "rector/rector-laravel": "*",
                 "rector/rector-nette": "*",
+                "rector/rector-phpoffice": "*",
                 "rector/rector-phpunit": "*",
                 "rector/rector-prefixed": "*",
                 "rector/rector-symfony": "*"
             },
+            "default-branch": true,
             "bin": [
                 "bin/rector"
             ],
@@ -10508,7 +10511,7 @@
             "description": "Prefixed and PHP 7.1 downgraded version of rector/rector",
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.11.57"
+                "source": "https://github.com/rectorphp/rector/tree/main"
             },
             "funding": [
                 {
@@ -10516,7 +10519,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-05T11:30:03+00:00"
+            "time": "2021-10-11T06:45:23+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -12079,7 +12082,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "bordeux/geoname-bundle": 20,
-        "survos/base-bundle": 20
+        "survos/base-bundle": 20,
+        "rector/rector": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

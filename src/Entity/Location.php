@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
+use Stringable;
+use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -16,7 +19,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @Gedmo\Tree(type="nested")
  * @ApiResource()
  */
-class Location
+class Location implements Stringable
 {
 
     public function __construct($code=null, $name=null, ?int $lvl=null)
@@ -24,6 +27,7 @@ class Location
         $this->code = $code;
         $this->name = $name;
         $this->lvl = $lvl;
+
     }
 
     /**
@@ -31,26 +35,34 @@ class Location
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
-     * @ORM\Column(type="string", length=32)
+     * @ORM\Column(type="string", length=180)
+     * @Assert\NotBlank()
      */
-    private $code;
+    private string $name;
 
     /**
-     * @ORM\Column(type="string", length=128)
+     * @ORM\Column(type="string", length=180)
+     * @Assert\NotBlank()
      */
-    private $name;
+    private string $code;
+
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private int $lvl;
 
     /**
      * @Gedmo\TreeLeft
      * @ORM\Column(name="lft", type="integer")
+     * @var int|mixed|null
      */
     private $lft;
 
     /**
-     * @return mixed
+     * @return mixed|null
      */
     public function getLft()
     {
@@ -59,16 +71,15 @@ class Location
 
     /**
      * @param mixed $lft
-     * @return Location
      */
-    public function setLft($lft)
+    public function setLft($lft): static
     {
         $this->lft = $lft;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return mixed|null
      */
     public function getRgt()
     {
@@ -77,16 +88,15 @@ class Location
 
     /**
      * @param mixed $rgt
-     * @return Location
      */
-    public function setRgt($rgt)
+    public function setRgt($rgt): static
     {
         $this->rgt = $rgt;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return mixed|null
      */
     public function getRoot()
     {
@@ -95,9 +105,8 @@ class Location
 
     /**
      * @param mixed $root
-     * @return Location
      */
-    public function setRoot($root)
+    public function setRoot($root): static
     {
         $this->root = $root;
         return $this;
@@ -111,10 +120,6 @@ class Location
         return $this->parent;
     }
 
-    /**
-     * @param mixed $parent
-     * @return Location
-     */
     public function setParent(?Location $parent): self
     {
         $this->parent = $parent;
@@ -122,18 +127,17 @@ class Location
     }
 
     /**
-     * @return mixed
+     * @return mixed|null
      */
-    public function getChildren()
+    public function getChildren(): ?Collection
     {
         return $this->children;
     }
 
     /**
      * @param mixed $children
-     * @return Location
      */
-    public function setChildren($children)
+    public function setChildren($children): static
     {
         $this->children = $children;
         return $this;
@@ -142,30 +146,21 @@ class Location
     /**
      * @return mixed
      */
-    public function getLvl(): int
+    public function getLvl(): ?int
     {
         return $this->lvl;
     }
 
-    /**
-     * @param mixed $lvl
-     * @return Location
-     */
-    public function setLvl($lvl)
+    public function setLvl(?int $lvl): static
     {
         $this->lvl = $lvl;
         return $this;
     }
 
     /**
-     * @Gedmo\TreeLevel()
-     * @ORM\Column(type="integer")
-     */
-    private $lvl;
-
-    /**
      * @Gedmo\TreeRight
      * @ORM\Column(name="rgt", type="integer")
+     * @var int|mixed|null
      */
     private $rgt;
 
@@ -173,6 +168,7 @@ class Location
      * @Gedmo\TreeRoot
      * @ORM\ManyToOne(targetEntity="Location", cascade={"persist"}, fetch="EAGER")
      * @ORM\JoinColumn(name="tree_root", referencedColumnName="id", onDelete="CASCADE")
+     * @var \App\Entity\Location|mixed|null
      */
     private $root;
 
@@ -182,18 +178,19 @@ class Location
      * @ORM\ManyToOne(targetEntity="Location", inversedBy="children", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $parent;
+    private ?\App\Entity\Location $parent = null;
 
 
     /**
      * @ORM\OneToMany(targetEntity="Location", mappedBy="parent", cascade={"persist", "remove"}, fetch="LAZY")
+     * @var \App\Entity\Location[]|Collection|mixed|null
      */
-    private $children;
+    private ?Collection $children = null;
 
     /**
      * @ORM\Column(type="string", length=2, nullable=true)
      */
-    private $alpha2;
+    private ?string $alpha2 = null;
 
     public function getId(): ?int
     {
@@ -236,7 +233,7 @@ class Location
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getName();
     }

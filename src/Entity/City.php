@@ -14,27 +14,27 @@ class City
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $country;
+    private ?string $country = null;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $subcountry;
+    private ?string $subcountry = null;
 
     /**
      * @ORM\Column(type="string", length=12)
      */
-    private $code;
+    private ?string $code = null;
 
     public function getId(): ?int
     {

@@ -17,9 +17,12 @@ class AppFixtures extends Fixture
     private ObjectManager $manager;
     private LocationRepository $locationRepository;
 
-    private $lvlCache = [];
+    /**
+     * @var mixed[][]
+     */
+    private array $lvlCache = [];
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $this->output = new ConsoleOutput();
         $this->manager = $manager;
@@ -31,7 +34,7 @@ class AppFixtures extends Fixture
     }
 
 
-    private function loadCountries()
+    private function loadCountries(): void
     {
         $lvl = 1;
         $this->lvlCache[$lvl] = [];
@@ -48,9 +51,9 @@ class AppFixtures extends Fixture
         $this->flushLevel($lvl);
     }
 
-    function flushLevel(int $lvl)
+    function flushLevel(int $lvl): void
     {
-        $this->output->writeln(sprintf("Flushing level $lvl"));
+        $this->output->writeln("Flushing level $lvl");
         $this->manager->flush(); // set the IDs
 //        $count = $this->locationRepository->count(['lvl'=> $lvl]);
         $count = $this->locationRepository->count([]);
@@ -60,7 +63,7 @@ class AppFixtures extends Fixture
     }
 
     // l "states/regions/subcountries" (lvl-2), and 15000 largest cities(lvl-3).
-    private function loadIso3166()
+    private function loadIso3166(): void
     {
         $lvl = 2;
         $this->lvlCache[$lvl] = [];
@@ -77,7 +80,7 @@ class AppFixtures extends Fixture
             if (!$parent) {
                 continue; // missing TP, East Timor.
             }
-            assert($parent, "Missing $countryCode, $country->name in " . join(',', array_keys($this->lvlCache[$lvl-1])));
+            assert($parent, "Missing $countryCode, $country->name in " . implode(',', array_keys($this->lvlCache[$lvl-1])));
 
             foreach ($country->divisions as $stateCode => $stateName) {
                 $location = (new Location($stateCode, $stateName))
@@ -90,7 +93,7 @@ class AppFixtures extends Fixture
         $this->flushLevel($lvl);
     }
 
-    public function loadCities()
+    public function loadCities(): void
     {
         $lvl = 3;
 //        $this->lvlCache[$lvl] = [];
@@ -127,7 +130,7 @@ class AppFixtures extends Fixture
                 continue;
                 $this->flushLevel($lvl);
                 dd($cityData);
-                assert($parent, $cityData->subcountry . " missing in " . join("\n", array_keys($this->lvlCache[$lvl-1])));
+                assert($parent, $cityData->subcountry . " missing in " . implode("\n", array_keys($this->lvlCache[$lvl-1])));
                 // we could create a fake subcountry, but really we need to find level 2
 //                $this->output->writeln(sprintf("Unable to find subcountry %s %s in country (%s)", $cityData->subcountry, $cityData->geonameid, $cityData->country));
             }

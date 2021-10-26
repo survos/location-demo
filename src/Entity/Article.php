@@ -14,37 +14,41 @@ class Article
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=80, nullable=true)
      */
-    private $title;
+    private ?string $title = null;
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @var mixed|mixed[]|null
      */
     private $locations = [];
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @var mixed|mixed[]|null
      */
     private $countries = [];
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @var mixed|mixed[]|null
      */
     private $states = [];
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @var mixed|mixed[]|null
      */
     private $cities = [];
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $locationScope;
+    private ?int $locationScope = null;
 
     public function getId(): ?int
     {

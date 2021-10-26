@@ -18,15 +18,15 @@ class SelectTagsTransformer extends EntitiesToPropertyTransformer
      * Transform array to a collection of entities
      *
      * @param array $values
-     * @return array
+     * @return mixed[]
      */
-    public function reverseTransform($values)
+    public function reverseTransform($values): array
     {
         if (!is_array($values) || empty($values)) {
             return array();
         }
 
-        $values = array_filter($values, function($value) {
+        $values = array_filter($values, function($value): bool {
             return $value !== "";
         });
         return parent::reverseTransform($values);
