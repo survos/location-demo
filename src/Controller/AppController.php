@@ -15,8 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class AppController extends AbstractController
 {
     use JsonResponseTrait;
+
     #[Route(path: '/', name: 'app_homepage')]
-    public function index() : Response
+    public function index(): Response
     {
         return $this->render('app/index.html.twig', [
             'controller_name' => 'AppController',
@@ -24,7 +25,7 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/html-tree', name: 'app_html_tree')]
-    public function htmlTree() : Response
+    public function htmlTree(): Response
     {
         $treeRepository = $this->getDoctrine()->getRepository(Location::class);
         $rootNodes = $treeRepository->findBy(['lvl' => 0], [], 30);
@@ -35,12 +36,12 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/geoname/{id}', name: 'geoname_show')]
-    public function geonameShow(Request $request, GeoName $geoName) : void
+    public function geonameShow(Request $request, GeoName $geoName): void
     {
         dd($geoName);
     }
 
-        #[Route(path: '/location-json.{_format}', name: 'location_json', defaults: ['_format' => 'html'])]
+    #[Route(path: '/location-json.{_format}', name: 'location_json', defaults: ['_format' => 'html'])]
     public function locationJson(Request $request)
     {
         $repo = $this->getDoctrine()->getRepository(Location::class);
@@ -73,13 +74,12 @@ class AppController extends AbstractController
             $data[] = [
                 'id' => $location->getCode(),
                 'text' => sprintf("%s (%s) / %d #%d",
-                    $location->getName(), $location->getParent() !== null ? $location->getParent()->getCode(): '~', $location->getLvl(), $location->getId()
+                    $location->getName(), $location->getParent() !== null ? $location->getParent()->getCode() : '~', $location->getLvl(), $location->getId()
                 )
             ];
         }
         return $this->jsonResponse($data, $request);
     }
-
 
 
 }

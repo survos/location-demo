@@ -64,7 +64,7 @@ class ArticleType extends AbstractType
                 'placeholder' => 'Level 0, not mapped.',
         ]);
 
-            foreach (['countries' => 0, 'states' => 1, 'cities' => 2] as $var => $lvl) {
+            foreach (['locations' => null, 'countries' => 0, 'states' => 1, 'cities' => 2] as $var => $lvl) {
                 $builder
                     ->add($var, Select2EntityType::class, [
                             'remote_route' => 'location_json',
@@ -80,6 +80,7 @@ class ArticleType extends AbstractType
                         ]
                     );
             }
+
 //        $builder
 //            ->add('states', Select2EntityType::class, [
 //                'label' => 'States (lvl 1) mapped.',
