@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Location;
-use Bordeux\Bundle\GeoNameBundle\Entity\GeoName;
+use Survos\LocationBundle\Entity\Location;
+use App\Repository\LocationRepository;
+use Survos\LocationBundle\Entity\GeoName;
 use Doctrine\ORM\QueryBuilder;
 use Survos\BaseBundle\Traits\JsonResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,10 +26,9 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/html-tree', name: 'app_html_tree')]
-    public function htmlTree(): Response
+    public function htmlTree(LocationRepository $locationRepository): Response
     {
-        $treeRepository = $this->getDoctrine()->getRepository(Location::class);
-        $rootNodes = $treeRepository->findBy(['lvl' => 0], [], 30);
+        $rootNodes = $locationRepository->findBy(['lvl' => 0], [], 30);
         return $this->render('app/html_tree.html.twig', [
 
             'rootNodes' => $rootNodes,
@@ -41,45 +41,7 @@ class AppController extends AbstractController
         dd($geoName);
     }
 
-    #[Route(path: '/location-json.{_format}', name: 'location_json', defaults: ['_format' => 'html'])]
-    public function locationJson(Request $request)
-    {
-        $repo = $this->getDoctrine()->getRepository(Location::class);
-        /** @var QueryBuilder $qb */
-        $qb = $repo->createQueryBuilder('l');
-        $lvl = $request->get('lvl', null);
-        if (is_numeric($lvl)) {
-            $qb->andWhere('l.lvl = :lvl')
-                ->setParameter('lvl', $lvl);
-        }
-        // count the slashes to increase the level.  get parent
-        if ($q = $request->get('q')) {
-            // us/nc us/north carolina
-            // us//chicago
-            // //chicago
 
-
-            $qb->andWhere('l.name LIKE :q')
-                ->setParameter('q', $q . '%');
-        }
-        if ($parentCode = $request->get('parentCode')) {
-            $parent = $repo->findBy(['code' => $parentCode]);
-            $qb->andWhere('l.parent = :parent')
-                ->setParameter('parent', $parent);
-        }
-        $locations = $qb->getQuery()->getResult();
-        $data = [];
-        /** @var Location $location */
-        foreach ($locations as $location) {
-            $data[] = [
-                'id' => $location->getCode(),
-                'text' => sprintf("%s (%s) / %d #%d",
-                    $location->getName(), $location->getParent() !== null ? $location->getParent()->getCode() : '~', $location->getLvl(), $location->getId()
-                )
-            ];
-        }
-        return $this->jsonResponse($data, $request);
-    }
 
 
 }

@@ -26,3 +26,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+#  this should be moved to location-bundle
+    gedmo.listener.tree:
+        class: Gedmo\Tree\TreeListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: survos_location }
+        calls:
+            - [ setAnnotationReader, [ "@annotation_reader" ] ]

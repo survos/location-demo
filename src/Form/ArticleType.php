@@ -3,9 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Article;
-use App\Entity\Location;
-use Bordeux\Bundle\GeoNameBundle\Entity\GeoName;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\ManagerRegistry;
+use Survos\LocationBundle\Entity\Location;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -16,6 +16,10 @@ use Tetranz\Select2EntityBundle\Form\Type\Select2EntityType;
 
 class ArticleType extends AbstractType
 {
+    public function __construct(private ManagerRegistry $registry)
+    {
+
+    }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -52,6 +56,7 @@ class ArticleType extends AbstractType
                 'class' => Location::class,
                 'primary_key' => 'code',
                 'text_property' => 'name',
+                'object_manager' => $this->registry->getManagerForClass(Location::class),
 
                 'minimum_input_length' => 1,
                 'page_limit' => 10,
@@ -68,6 +73,8 @@ class ArticleType extends AbstractType
                 $builder
                     ->add($var, Select2EntityType::class, [
                             'remote_route' => 'location_json',
+//                            'object_manager' => ,
+
                             'remote_params' => ['lvl' => $lvl],
 
                             'transformer' => SelectLocationsTransformer::class,

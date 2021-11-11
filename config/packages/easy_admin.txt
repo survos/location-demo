@@ -23,30 +23,30 @@ easy_admin:
 
     entities:
         Administrative:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\Administrative
+            class: Survos\LocationBundle\Entity\Administrative
 #            class: Geonames\Entity\Administrative
 
         Bordeux_Administrative:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\Administrative
+            class: Survos\LocationBundle\Entity\Administrative
 
         Country:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\Country
+            class: Survos\LocationBundle\Entity\Country
 
         Timezone:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\Timezone
+            class: Survos\LocationBundle\Entity\Timezone
 
         Geoname_All:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            class: Survos\LocationBundle\Entity\GeoName
             list:
                 filters: ['asciiName', 'featureClass', 'featureCode']
                 fields: ['id', 'name', 'admin1', 'admin2', 'admin3','admin4', 'featureClass', 'featureCode', 'countryCode', 'administrativeCode' ]
 
         Geoname_Feature_A:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            class: Survos\LocationBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureClass = 'A'"
         Geoname_Feature_V:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            class: Survos\LocationBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureClass = 'V'"
                 # you can also use container parameters inside the filters
@@ -54,25 +54,25 @@ easy_admin:
 
 
         Geo_Admin1:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            class: Survos\LocationBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureCode = 'ADM1'"
         Geo_Admin2:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            class: Survos\LocationBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureCode = 'ADM2'"
         Geo_Admin3:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            class: Survos\LocationBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureCode = 'ADM3'"
         Geo_PCLI:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            class: Survos\LocationBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureCode = 'PCLI'"
 
 
         Location:
-            class: App\Entity\Location
+            class: Survos\LocationBundle\Entity\Location
             label: SurvosLocation
         City:
             class: App\Entity\City
@@ -81,15 +81,15 @@ easy_admin:
             class: App\Entity\Country
 
         Hierarchy:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\Hierarchy
+            class: Survos\LocationBundle\Entity\Hierarchy
 
 
         Geo_Admin:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            class: Survos\LocationBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureClass = 'A'"
         Geo_V:
-            class: Bordeux\Bundle\GeoNameBundle\Entity\GeoName
+            class: Survos\LocationBundle\Entity\GeoName
             list:
                 dql_filter: "entity.featureClass = 'V'"
                 # you can also use container parameters inside the filters

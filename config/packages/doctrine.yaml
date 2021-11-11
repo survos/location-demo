@@ -10,10 +10,10 @@ doctrine:
                 # driver: 'pdo_mysql'
                 # server_version: '5.7'
                 # charset: utf8mb4
-            geonames:
+            survos_location:
                 # configure these for your database server
                 # schema_filter: ~^(?!geo__)~
-                url: '%env(resolve:DATABASE_GEONAMES_URL)%'
+                url: '%env(resolve:DATABASE_LOCATION_URL)%'
 
     orm:
         default_entity_manager: default
@@ -37,13 +37,13 @@ doctrine:
                         prefix: 'App\Entity'
                         alias: App
 
-            geonames:
-                connection: geonames
+            survos_location:
+                connection: survos_location
                 mappings:
-                    BordeuxGeoNameBundle:
+                    SurvosLocationBundle:
                         is_bundle: true
                         dir: 'Entity'
                         type: annotation
                         # dir: "%kernel.project_dir%/vendor/bordeux/geoname-bundle/Entity"
-                        prefix: 'Bordeux\Bundle\GeoNameBundle\Entity'
+                        prefix: 'Survos\LocationBundle\Entity'
                         # alias: Geonames

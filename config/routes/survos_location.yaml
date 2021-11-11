@@ -1,0 +1,1 @@
+location_json: {path: /location-json, controller: 'Survos\LocationBundle\Controller\SurvosLocationController::locationJson'}
