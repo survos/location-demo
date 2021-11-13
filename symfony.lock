@@ -756,6 +756,9 @@
     "symfony/yaml": {
         "version": "v5.0.5"
     },
+    "symplify/config-transformer": {
+        "version": "9.4.70"
+    },
     "tetranz/select2entity-bundle": {
         "version": "v3.0.0"
     },

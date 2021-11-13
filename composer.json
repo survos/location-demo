@@ -23,7 +23,7 @@
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.2",
         "survos/base-bundle": "dev-master",
-        "survos/location-bundle": "dev-main",
+        "survos/location-bundle": "*@dev",
         "symfony/asset": "^5.1",
         "symfony/console": "^5.1",
         "symfony/dotenv": "^5.1",
@@ -55,15 +55,7 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^3.3",
-        "phpunit/phpunit": "^9.5",
-        "rector/rector": "dev-main",
-        "symfony/browser-kit": "^5.1",
-        "symfony/css-selector": "^5.1",
-        "symfony/debug-bundle": "^5.1",
-        "symfony/maker-bundle": "^1.0",
-        "symfony/phpunit-bridge": "^5.3",
-        "symfony/stopwatch": "^5.1",
+        "symfony/framework-bundle" : ">5.3",
         "symfony/web-profiler-bundle": "^5.1"
     },
     "config": {
@@ -122,6 +114,10 @@
         }
     },
     "repositories": {
+        "survos_location_bundle": {
+            "type": "vcs",
+            "url": "git@github.com:survos/LocationBundle.git"
+        },
         "survosbase": {
             "type": "vcs",
             "url": "git@github.com:survos/BaseBundle.git"

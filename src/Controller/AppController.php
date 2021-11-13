@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Survos\LocationBundle\Entity\Location;
-use App\Repository\LocationRepository;
+use Survos\LocationBundle\Repository\LocationRepository;
 use Survos\LocationBundle\Entity\GeoName;
 use Doctrine\ORM\QueryBuilder;
 use Survos\BaseBundle\Traits\JsonResponseTrait;
@@ -28,7 +28,7 @@ class AppController extends AbstractController
     #[Route(path: '/html-tree', name: 'app_html_tree')]
     public function htmlTree(LocationRepository $locationRepository): Response
     {
-        $rootNodes = $locationRepository->findBy(['lvl' => 0], [], 30);
+        $rootNodes = $locationRepository->findBy(['lvl' => 1    ], [], 30);
         return $this->render('app/html_tree.html.twig', [
 
             'rootNodes' => $rootNodes,
