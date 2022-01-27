@@ -74,9 +74,7 @@ class ArticleType extends AbstractType
                     ->add($var, Select2EntityType::class, [
                             'remote_route' => 'location_json',
 //                            'object_manager' => ,
-
-                            'remote_params' => ['lvl' => $lvl],
-
+                            'remote_params' => ['lvl' => $lvl+1],
                             'transformer' => SelectLocationsTransformer::class,
                             'class' => Location::class,
 

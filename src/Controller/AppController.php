@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AppController extends AbstractController
 {
+
     use JsonResponseTrait;
 
     #[Route(path: '/', name: 'app_homepage')]

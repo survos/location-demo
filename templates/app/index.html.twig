@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AppController!{% endblock %}
+{% block page_title %}Location Demo{% endblock %}
 
 {% block body %}
 <style>
@@ -12,8 +12,6 @@
 
     {% import "@SurvosLocation/survos_location_widget.html.twig" as acme_foo_widget %}
     {{ acme_foo_widget.bar('https://github.com/msalsas/symfony-bundle-skeleton', 34) }}
-
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
     This friendly message is coming from:
     <ul>
