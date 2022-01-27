@@ -7,7 +7,9 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension(
         'survos_location',
-        ['user_provider' => 'App\Entity\User',
+        [
+            'db' => 'location.db',
+            'user_provider' => 'App\Entity\User',
             'bar' => ['survos_location.ipsum', 'survos_location.lorem'],
             'integer_foo' => 50,
             'integer_bar' => 2
