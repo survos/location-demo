@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48b9232702047ca979577a85b8234165",
+    "content-hash": "8c57515b93218e0e7aff99ecabb9eb33",
     "packages": [
         {
             "name": "api-platform/core",
@@ -4039,6 +4039,66 @@
                 "issues": "https://github.com/survos/BaseBundle/issues"
             },
             "time": "2021-12-25T12:38:06+00:00"
+        },
+        {
+            "name": "survos/location-bundle",
+            "version": "dev-feature-github-actions",
+            "dist": {
+                "type": "path",
+                "url": "//home/tac/survos/bundles/location-bundle",
+                "reference": "21d007ed4422a04500a81ed2706cfb934d3ee9ad"
+            },
+            "require": {
+                "php": ">=7.4",
+                "symfony/flex": "^1.17",
+                "symfony/framework-bundle": ">=4.0",
+                "symfony/yaml": ">=4.0"
+            },
+            "conflict": {
+                "symfony/symfony": "<4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "symfony/phpunit-bridge": ">=4.0",
+                "symplify/config-transformer": "^9.4"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Survos\\LocationBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Survos\\LocationBundle\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tac Tacelosky",
+                    "email": "tacman@gmail.com"
+                }
+            ],
+            "description": "Use Geonames to in an application",
+            "homepage": "https://github.com/survos/SurvosLocationBundle",
+            "keywords": [
+                "city",
+                "state"
+            ],
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "symfony/asset",
@@ -12315,6 +12375,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "bordeux/geoname-bundle": 20,
+        "survos/location-bundle": 20,
         "rector/rector": 20
     },
     "prefer-stable": true,
