@@ -58,6 +58,5 @@ doctrine:
                     SurvosLocationBundle:
                         is_bundle: true
                         dir: 'Entity'
-                        type: annotation
                         # dir: "%kernel.project_dir%/vendor/bordeux/geoname-bundle/Entity"
                         prefix: 'Survos\LocationBundle\Entity'
