@@ -5,6 +5,9 @@ require('bootstrap');
 require('@popperjs/core');
 require('../../vendor/survos/base-bundle/src/Resources/assets/js/adminlte');
 
+// start the Stimulus application
+import '../bootstrap';
+
 require('select2'); // base library, not select2entity
 
 // any CSS you require will output into a single css file (app.css in this case)
