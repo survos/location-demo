@@ -11,18 +11,17 @@
         "ext-sqlite3": "*",
         "ext-zip": "*",
         "api-platform/core": "^2.6",
-        "composer/package-versions-deprecated": "1.11.99.4",
+        "composer/package-versions-deprecated": "^1.11.99.4",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.9",
-        "easycorp/easyadmin-bundle": "^2.3",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.2",
         "stof/doctrine-extensions-bundle": "*",
-        "survos/base-bundle": "^1.0",
-        "survos/location-bundle": "*@dev",
+        "survos/base-bundle": "dev-master",
+        "survos/location-bundle": "*",
         "symfony/asset": "^5.4 || ^6.0",
         "symfony/console": "^5.4 || ^6.0",
         "symfony/dotenv": "^5.4 || ^6.0",
@@ -41,7 +40,7 @@
         "symfony/property-info": "^5.4 || ^6.0",
         "symfony/proxy-manager-bridge": "^5.4 || ^6.0",
         "symfony/runtime": "^5.4 || ^6.0",
-        "symfony/security-bundle": "^5.4 || ^6.0",
+        "symfony/security-bundle": "^6.0",
         "symfony/serializer": "^5.4 || ^6.0",
         "symfony/string": "^5.4 || ^6.0",
         "symfony/translation": "^5.4 || ^6.0",
@@ -125,10 +124,6 @@
         }
     },
     "repositories": {
-        "location": {
-            "type": "path",
-            "url": "//home/tac/survos/bundles/location-bundle"
-        },
         "survosbase": {
             "type": "vcs",
             "url": "git@github.com:Survos/BaseBundle.git"

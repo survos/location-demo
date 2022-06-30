@@ -26,9 +26,9 @@ class SidebarMenuSubscriber extends BaseMenuSubscriber implements EventSubscribe
         $this->addMenuItem($menu, ['route' => 'app_homepage']);
         $this->addMenuItem($menu, ['route' => 'article_index']);
         $this->addMenuItem($menu, ['route' => 'article_new']);
-        $this->addMenuItem($menu, ['route' => 'app_html_tree']);
+//        $this->addMenuItem($menu, ['route' => 'app_html_tree']);
         $this->addMenuItem($menu, ['route' => 'app_typography']);
-        $this->addMenuItem($menu, ['route' => 'app_heroku']);
+//        $this->addMenuItem($menu, ['route' => 'app_heroku']);
 // https://dashboard.heroku.com/apps/agile-chamber-52782/resources
         // for nested menus, don't add a route, just a label, then use it for the argument to addMenuItem
         $nestedMenu = $this->addMenuItem($menu, ['label' => 'Credits']);
@@ -51,7 +51,7 @@ class SidebarMenuSubscriber extends BaseMenuSubscriber implements EventSubscribe
     public static function getSubscribedEvents(): array
     {
         return [
-            MenuBuilder::SIDEBAR_MENU_EVENT => 'onKnpMenuEvent',
+            KnpMenuEvent::SIDEBAR_MENU_EVENT => 'onKnpMenuEvent',
         ];
     }
 }
