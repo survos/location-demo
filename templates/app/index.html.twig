@@ -11,8 +11,14 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
+    <h3>Administrative Location Data</h3>
+
     <ul>
+        {% for lvl, count in counts %}
+            <li>
+                <a href="{{ path('bundle_location_browse', {lvl: lvl}) }}">Level {{ lvl }}: {{ count }}</a>
+            </li>
+        {% endfor %}
         <li>Your controller at <code><a href="{{ '/home/tac/location-demo/src/Controller/AppController.php'|file_link(0) }}">src/Controller/AppController.php</a></code></li>
         <li>Your template at <code><a href="{{ '/home/tac/location-demo/templates/app/index.html.twig'|file_link(0) }}">templates/app/index.html.twig</a></code></li>
     </ul>

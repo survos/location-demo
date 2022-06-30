@@ -83,8 +83,7 @@ class AppFixtures extends Fixture
             assert($parent, "Missing $countryCode, $country->name in " . implode(',', array_keys($this->lvlCache[$lvl-1])));
 
             foreach ($country->divisions as $stateCode => $stateName) {
-                $location = (new Location($stateCode, $stateName))
-                    ->setLvl($lvl)
+                $location = (new Location($stateCode, $stateName, $lvl))
                     ->setParent($parent);
                 $this->manager->persist($location);
                 $this->lvlCache[$lvl][$stateName] = $location;

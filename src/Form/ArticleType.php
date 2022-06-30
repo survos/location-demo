@@ -3,9 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Article;
-use App\Entity\Location;
 use Bordeux\Bundle\GeoNameBundle\Entity\GeoName;
 use Doctrine\ORM\QueryBuilder;
+use Survos\LocationBundle\Entity\Location;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -64,7 +64,7 @@ class ArticleType extends AbstractType
                 'placeholder' => 'Level 0, not mapped.',
         ]);
 
-            foreach (['locations' => null, 'countries' => 0, 'states' => 1, 'cities' => 2] as $var => $lvl) {
+            foreach (['locations' => null, 'countries' => 1, 'states' => 2, 'cities' => 3] as $var => $lvl) {
                 $builder
                     ->add($var, Select2EntityType::class, [
                             'remote_route' => 'location_json',

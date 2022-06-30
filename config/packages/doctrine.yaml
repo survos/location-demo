@@ -14,6 +14,10 @@ doctrine:
                 # configure these for your database server
                 # schema_filter: ~^(?!geo__)~
                 url: '%env(resolve:DATABASE_GEONAMES_URL)%'
+            location:
+                # configure these for your database server
+                # schema_filter: ~^(?!geo__)~
+                url: '%env(resolve:DATABASE_LOCATIONS_URL)%'
 
     orm:
         default_entity_manager: default
@@ -27,7 +31,7 @@ doctrine:
 #                    gedmo_tree:
 #                        type: annotation
 #                        prefix: Gedmo\Tree\Entity
-#                        dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+#                        dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Tree/Entity"
 #                        alias: GedmoTree # (optional) it will default to the name set for the mapping
 #                        is_bundle: false
                     App:
@@ -37,13 +41,23 @@ doctrine:
                         prefix: 'App\Entity'
                         alias: App
 
-            geonames:
-                connection: geonames
+#            geonames:
+#                connection: geonames
+#                mappings:
+#                    BordeuxGeoNameBundle:
+#                        is_bundle: true
+#                        dir: 'Entity'
+#                        type: annotation
+#                        # dir: "%kernel.project_dir%/vendor/bordeux/geoname-bundle/Entity"
+#                        prefix: 'Bordeux\Bundle\GeoNameBundle\Entity'
+#                        # alias: Geonames
+
+            survos_location:
+                connection: location
                 mappings:
-                    BordeuxGeoNameBundle:
+                    SurvosLocationBundle:
                         is_bundle: true
                         dir: 'Entity'
                         type: annotation
                         # dir: "%kernel.project_dir%/vendor/bordeux/geoname-bundle/Entity"
-                        prefix: 'Bordeux\Bundle\GeoNameBundle\Entity'
-                        # alias: Geonames
+                        prefix: 'Survos\LocationBundle\Entity'

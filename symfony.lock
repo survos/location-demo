@@ -177,9 +177,6 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
-    "knplabs/knp-markdown-bundle": {
-        "version": "1.9.0"
-    },
     "knplabs/knp-menu": {
         "version": "v3.1.0"
     },
@@ -212,9 +209,6 @@
     },
     "meyfa/php-svg": {
         "version": "v0.9.1"
-    },
-    "michelf/php-markdown": {
-        "version": "1.9.0"
     },
     "mindscreen/yarnlock": {
         "version": "v1.0.1"
@@ -386,11 +380,26 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "stof/doctrine-extensions-bundle": {
+        "version": "1.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.2",
+            "ref": "e805aba9eff5372e2d149a9ff56566769e22819d"
+        },
+        "files": [
+            "config/packages/stof_doctrine_extensions.yaml"
+        ]
+    },
     "survos/base-bundle": {
         "version": "1.x-dev"
     },
     "survos/landing-bundle": {
         "version": "1.7.2"
+    },
+    "survos/location-bundle": {
+        "version": "dev-feature-github-actions"
     },
     "symfony/asset": {
         "version": "v5.0.5"
@@ -484,19 +493,18 @@
         "version": "v5.0.5"
     },
     "symfony/framework-bundle": {
-        "version": "4.4",
+        "version": "5.4",
         "recipe": {
             "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.4",
-            "ref": "23ecaccc551fe2f74baf613811ae529eb07762fa"
+            "branch": "main",
+            "version": "5.4",
+            "ref": "3cd216a4d007b78d8554d44a5b1c0a446dab24fb"
         },
         "files": [
-            "config/bootstrap.php",
             "config/packages/cache.yaml",
             "config/packages/framework.yaml",
-            "config/packages/test/framework.yaml",
-            "config/routes/dev/framework.yaml",
+            "config/preload.php",
+            "config/routes/framework.yaml",
             "config/services.yaml",
             "public/index.php",
             "src/Controller/.gitignore",
@@ -643,12 +651,12 @@
         ]
     },
     "symfony/security-bundle": {
-        "version": "4.4",
+        "version": "5.4",
         "recipe": {
             "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.4",
-            "ref": "7b4408dc203049666fe23fabed23cbadc6d8440f"
+            "branch": "main",
+            "version": "5.3",
+            "ref": "98f1f2b0d635908c2b40f3675da2d23b1a069d30"
         },
         "files": [
             "config/packages/security.yaml"

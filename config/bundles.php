@@ -21,7 +21,6 @@ return [
     ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle::class => ['all' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
     Tetranz\Select2EntityBundle\TetranzSelect2EntityBundle::class => ['all' => true],
-    Bordeux\Bundle\GeoNameBundle\BordeuxGeoNameBundle::class => ['all' => true],
     Survos\BaseBundle\SurvosBaseBundle::class => ['all' => true],
-    Knp\Bundle\MarkdownBundle\KnpMarkdownBundle::class => ['all' => true],
+    Survos\LocationBundle\SurvosLocationBundle::class => ['all' => true],
 ];
