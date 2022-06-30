@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Location;
 use Bordeux\Bundle\GeoNameBundle\Entity\GeoName;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Survos\BaseBundle\Traits\JsonResponseTrait;
+use Survos\LocationBundle\Repository\LocationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,24 +18,51 @@ class AppController extends AbstractController
 {
     use JsonResponseTrait;
 
+    public function __construct(
+        private LocationRepository $locationRepository,
+        private EntityManagerInterface $entityManager)
+    {
+
+    }
+
     #[Route(path: '/', name: 'app_homepage')]
     public function index(): Response
     {
+        $counts = [];
+        foreach (['all', 'country', 'state', 'city'] as $idx => $name) {
+
+        }
+        for ($i=1; $i<=3; $i++) {
+            $counts[$i] = $this->locationRepository->count(['lvl' => $i]);
+        }
         return $this->render('app/index.html.twig', [
             'controller_name' => 'AppController',
+            'counts' => $counts,
         ]);
     }
 
     #[Route(path: '/html-tree', name: 'app_html_tree')]
     public function htmlTree(): Response
     {
-        $treeRepository = $this->getDoctrine()->getRepository(Location::class);
-        $rootNodes = $treeRepository->findBy(['lvl' => 0], [], 30);
+        $treeRepository = $this->entityManager->getRepository(Location::class);
+        $rootNodes = $treeRepository->findBy(['lvl' => 1], [], 30);
         return $this->render('app/html_tree.html.twig', [
-
             'rootNodes' => $rootNodes,
         ]);
     }
+
+    #[Route(path: '/location-browse/{lvl}', name: 'bundle_location_browse')]
+    public function location_browse(int $lvl): Response
+    {
+        $data = $this->locationRepository->findBy(['lvl' => $lvl], ['name' => 'asc'], 50);
+        dd($data);
+//        $treeRepository = $this->entityManager->getRepository(Location::class);
+//        $rootNodes = $treeRepository->findBy(['lvl' => 1], [], 30);
+//        return $this->render('app/html_tree.html.twig', [
+//            'rootNodes' => $rootNodes,
+//        ]);
+    }
+
 
     #[Route(path: '/geoname/{id}', name: 'geoname_show')]
     public function geonameShow(Request $request, GeoName $geoName): void
@@ -44,7 +73,8 @@ class AppController extends AbstractController
     #[Route(path: '/location-json.{_format}', name: 'location_json', defaults: ['_format' => 'html'])]
     public function locationJson(Request $request)
     {
-        $repo = $this->getDoctrine()->getRepository(Location::class);
+//        $repo = $this->entityManager->getRepository(Location::class);
+        $repo = $this->locationRepository;
         /** @var QueryBuilder $qb */
         $qb = $repo->createQueryBuilder('l');
         $lvl = $request->get('lvl', null);

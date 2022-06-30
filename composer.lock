@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c57515b93218e0e7aff99ecabb9eb33",
+    "content-hash": "cff9d54eb5fb2bd20e37f99c1b64234a",
     "packages": [
         {
             "name": "api-platform/core",
@@ -215,80 +215,6 @@
                 "source": "https://github.com/Behat/Transliterator/tree/v1.5.0"
             },
             "time": "2022-03-30T09:27:43+00:00"
-        },
-        {
-            "name": "bordeux/geoname-bundle",
-            "version": "dev-symfony5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/survos/geoname-bundle.git",
-                "reference": "707e1a78ea408f0cc3f6c5c9e3a8dee529e6d75e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/survos/geoname-bundle/zipball/707e1a78ea408f0cc3f6c5c9e3a8dee529e6d75e",
-                "reference": "707e1a78ea408f0cc3f6c5c9e3a8dee529e6d75e",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/doctrine-bundle": "^2.0",
-                "ext-zip": "*",
-                "guzzlehttp/guzzle": "^6.0 || ^7.0",
-                "php": ">=8.0",
-                "symfony/console": "^5.0 || ^6.0"
-            },
-            "require-dev": {
-                "doctrine/orm": "^2.5",
-                "ergebnis/composer-normalize": "^2.26",
-                "phpstan/phpstan": "^1.7",
-                "phpunit/phpunit": "^9.5.20",
-                "roave/security-advisories": "dev-latest",
-                "symfony/framework-bundle": "^5.0 || ^6.0",
-                "symfony/yaml": "^5.0 || ^6.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Bordeux\\Bundle\\GeoNameBundle\\": ""
-                }
-            },
-            "scripts": {
-                "cs:check": [
-                    "@php -r \"file_exists('bin/phpcs') || copy('https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar', 'vendor/bin/phpcs');\"",
-                    "@php ./vendor/bin/phpcs"
-                ],
-                "cs:fix": [
-                    "@php -r \"file_exists('bin/phpcbf') || copy('https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar', 'vendor/bin/phpcbf');\"",
-                    "@php ./vendor/bin/phpcbf"
-                ],
-                "tests": [
-                    "@php ./vendor/bin/phpunit"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Krzysztof Bednarczyk",
-                    "email": "krzysztof@bednarczyk.me"
-                }
-            ],
-            "description": "Symfony GeoNameBundle",
-            "homepage": "https://github.com/bordeux/geoname-bundle",
-            "keywords": [
-                "geoname",
-                "geonameid"
-            ],
-            "support": {
-                "source": "https://github.com/survos/geoname-bundle/tree/symfony5"
-            },
-            "time": "2022-06-09T23:05:33+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
@@ -4046,19 +3972,21 @@
             "dist": {
                 "type": "path",
                 "url": "//home/tac/survos/bundles/location-bundle",
-                "reference": "21d007ed4422a04500a81ed2706cfb934d3ee9ad"
+                "reference": "1af26e7c9e4b7b61eaafc6cdd2a5c320630fa30c"
             },
             "require": {
-                "php": ">=7.4",
-                "symfony/flex": "^1.17",
-                "symfony/framework-bundle": ">=4.0",
-                "symfony/yaml": ">=4.0"
+                "php": ">=8.1",
+                "symfony/flex": "^2.0",
+                "symfony/framework-bundle": ">=5.4",
+                "symfony/yaml": ">=5.4"
             },
             "conflict": {
                 "symfony/symfony": "<4.0"
             },
             "require-dev": {
+                "phpstan/phpstan": "^1.7",
                 "phpunit/phpunit": "^9.5",
+                "rector/rector": "^0.13.6",
                 "symfony/phpunit-bridge": ">=4.0",
                 "symplify/config-transformer": "^9.4"
             },
@@ -4070,7 +3998,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Survos\\LocationBundle\\": ""
+                    "Survos\\LocationBundle\\": "src"
                 },
                 "exclude-from-classmap": [
                     "/Tests/"
@@ -4079,6 +4007,12 @@
             "autoload-dev": {
                 "psr-4": {
                     "Survos\\LocationBundle\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "auto-scripts": {
+                    "cache:clear": "symfony-cmd",
+                    "assets:install %PUBLIC_DIR%": "symfony-cmd"
                 }
             },
             "license": [
@@ -5297,28 +5231,28 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.19.2",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "d1a692369be53445af6e391170b509d7f5d026cf"
+                "reference": "78510b1be591433513c8087deec24e9fd90d110d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/d1a692369be53445af6e391170b509d7f5d026cf",
-                "reference": "d1a692369be53445af6e391170b509d7f5d026cf",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/78510b1be591433513c8087deec24e9fd90d110d",
+                "reference": "78510b1be591433513c8087deec24e9fd90d110d",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0|^2.0",
-                "php": ">=7.1"
+                "composer-plugin-api": "^2.1",
+                "php": ">=8.0"
             },
             "require-dev": {
-                "composer/composer": "^1.0.2|^2.0",
-                "symfony/dotenv": "^4.4|^5.0|^6.0",
-                "symfony/filesystem": "^4.4|^5.0|^6.0",
-                "symfony/phpunit-bridge": "^4.4.12|^5.0|^6.0",
-                "symfony/process": "^4.4|^5.0|^6.0"
+                "composer/composer": "^2.1",
+                "symfony/dotenv": "^5.4|^6.0",
+                "symfony/filesystem": "^5.4|^6.0",
+                "symfony/phpunit-bridge": "^5.4|^6.0",
+                "symfony/process": "^5.4|^6.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -5342,7 +5276,7 @@
             "description": "Composer plugin for Symfony",
             "support": {
                 "issues": "https://github.com/symfony/flex/issues",
-                "source": "https://github.com/symfony/flex/tree/v1.19.2"
+                "source": "https://github.com/symfony/flex/tree/v2.2.2"
             },
             "funding": [
                 {
@@ -5358,7 +5292,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-14T21:13:39+00:00"
+            "time": "2022-06-15T06:51:57+00:00"
         },
         {
             "name": "symfony/form",
@@ -12374,7 +12308,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "bordeux/geoname-bundle": 20,
         "survos/location-bundle": 20,
         "rector/rector": 20
     },

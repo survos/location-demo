@@ -4,14 +4,17 @@
 
 {% block body %}
 
-        <h1>HTML Location Tree </h1>
+        <h1>App Location Class (just countries and 2nd level, from AppFixtures) </h1>
         <div id="jstree">
         <ul>
             {% for root in rootNodes %}
             <li> {{ root.name }}
+                <span class="text-sm-end">{{ root.children|length }}</span>
                 <ul>
                 {% for child in root.children %}
-                    <li>{{ child.name }}</li>
+                    <li>{{ child.name }}
+                        <span class="text-sm-end">{{ child.children|length }}</span>
+                    </li>
                     {% endfor %}
                 </ul>
             </li>
