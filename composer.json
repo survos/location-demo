@@ -118,8 +118,10 @@
             "php bin/console survos:location:load"
             ],
         "compile": [
+            "php bin/console doctrine:schema:update --force --dump-sql --em=survos_location",
+            "php bin/console survos:location:load",
 
-            "wget https://museo.survos.com.s3.amazonaws.com/loc.db.zip --no-check-certificate",
+            "wget https://museo.survos.com.s3.amazonaws.com/loc.db.zip --no-check-certificate -nv",
             "unzip loc.db.zip"
         ]
     },
