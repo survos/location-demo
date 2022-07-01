@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a6b3cff0d04f4a643429482fd4cec15",
+    "content-hash": "4e9b5e6b4f295accbfc10a2eadcf43f4",
     "packages": [
         {
             "name": "api-platform/core",
@@ -3973,12 +3973,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/LocationBundle.git",
-                "reference": "ba76727c6acda7225c99d1970745c27262688817"
+                "reference": "cf872e56a09b44646df1f10b8c3d0810a750d2f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/LocationBundle/zipball/ba76727c6acda7225c99d1970745c27262688817",
-                "reference": "ba76727c6acda7225c99d1970745c27262688817",
+                "url": "https://api.github.com/repos/survos/LocationBundle/zipball/cf872e56a09b44646df1f10b8c3d0810a750d2f8",
+                "reference": "cf872e56a09b44646df1f10b8c3d0810a750d2f8",
                 "shasum": ""
             },
             "require": {
@@ -4014,7 +4014,17 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Survos\\LocationBundle\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "auto-scripts": {
+                    "cache:clear": "symfony-cmd",
+                    "assets:install %PUBLIC_DIR%": "symfony-cmd"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -4031,10 +4041,10 @@
                 "state"
             ],
             "support": {
-                "issues": "https://github.com/survos/LocationBundle/issues",
-                "source": "https://github.com/survos/LocationBundle/tree/main"
+                "source": "https://github.com/survos/LocationBundle/tree/main",
+                "issues": "https://github.com/survos/LocationBundle/issues"
             },
-            "time": "2022-07-01T13:04:13+00:00"
+            "time": "2022-07-01T13:59:48+00:00"
         },
         {
             "name": "symfony/asset",
@@ -10977,12 +10987,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "9b93bb7c428af0cc6a58d9debb44a154e214d83c"
+                "reference": "84dff4485c13bd495f6b8663a9c21105718498a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/9b93bb7c428af0cc6a58d9debb44a154e214d83c",
-                "reference": "9b93bb7c428af0cc6a58d9debb44a154e214d83c",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/84dff4485c13bd495f6b8663a9c21105718498a7",
+                "reference": "84dff4485c13bd495f6b8663a9c21105718498a7",
                 "shasum": ""
             },
             "require": {
@@ -11030,7 +11040,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-01T07:44:56+00:00"
+            "time": "2022-07-01T13:50:24+00:00"
         },
         {
             "name": "sebastian/cli-parser",
