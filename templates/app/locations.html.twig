@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h3>Administrative Level {{ lvl }} Location Data</h3>
+
+    {% component api_grid with {
+        caller: _self,
+        class: locationClass,
+        filter: {
+            lvl: lvl
+        },
+        columns: [
+            'id',
+            'name',
+            'lvl',
+            'code'
+        ]
+    } %}
+
+    {% endcomponent %}
+
+{% endblock %}

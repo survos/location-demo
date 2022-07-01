@@ -2,11 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Location;
-use Bordeux\Bundle\GeoNameBundle\Entity\GeoName;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Survos\BaseBundle\Traits\JsonResponseTrait;
+use Survos\LocationBundle\Entity\Location;
 use Survos\LocationBundle\Repository\LocationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -54,8 +53,13 @@ class AppController extends AbstractController
     #[Route(path: '/location-browse/{lvl}', name: 'bundle_location_browse')]
     public function location_browse(int $lvl): Response
     {
-        $data = $this->locationRepository->findBy(['lvl' => $lvl], ['name' => 'asc'], 50);
-        dd($data);
+        return $this->render('app/locations.html.twig', [
+            'locationClass' => Location::class,
+            'lvl' => $lvl,
+            'filter' => [
+                'lvl' => $lvl
+            ]
+        ]);
 //        $treeRepository = $this->entityManager->getRepository(Location::class);
 //        $rootNodes = $treeRepository->findBy(['lvl' => 1], [], 30);
 //        return $this->render('app/html_tree.html.twig', [
