@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
+        "ext-intl": "*",
         "ext-zip": "*",
         "api-platform/core": "^2.6",
         "composer/package-versions-deprecated": "^1.11.99.4",
@@ -120,9 +121,8 @@
         "compile": [
             "php bin/console doctrine:schema:update --force --dump-sql --em=survos_location",
             "php bin/console survos:location:load --no-debug",
-
-            "wget https://museo.survos.com.s3.amazonaws.com/loc.db.zip --no-check-certificate -nv",
-            "unzip loc.db.zip"
+            "# wget https://museo.survos.com.s3.amazonaws.com/loc.db.zip --no-check-certificate -nv",
+            "# unzip loc.db.zip"
         ]
     },
     "conflict": {
