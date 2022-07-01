@@ -6,6 +6,16 @@ See this in action on heroku, at
 
 ## Create This Demo Locally
 
+```
+# optionally use a different database in .env.local (or .env)
+DATABASE_LOCATIONS_URL=sqlite:///%kernel.project_dir%/locations.db
+```
+
+```bash
+bin/console doctrine:schema:update --force --dump-sql --em=survos_location
+bin/console survos:location:load -vv
+```
+
 ### Requirements
 
 * composer

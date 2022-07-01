@@ -3,8 +3,8 @@ window.jQuery = window.$ = global.jQuery = global.$ = $;
 
 require('bootstrap');
 require('@popperjs/core');
-require('../../vendor/survos/base-bundle/src/Resources/assets/js/adminlte');
-
+require('../../vendor/survos/base-bundle/assets/js/adminlte');
+require('../../vendor/tetranz/select2entity-bundle/Resources/public/js/select2entity.js');
 // start the Stimulus application
 import '../bootstrap';
 

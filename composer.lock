@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e1dd829057fc62c571735e381cd1a4a",
+    "content-hash": "7a6b3cff0d04f4a643429482fd4cec15",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1871,16 +1871,16 @@
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git",
-                "reference": "7ba26afbeda954b0d12ff3afc3404d7614e060ac"
+                "reference": "fb188bfe352ccd7ecff06c08eca05fed47f30de4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/7ba26afbeda954b0d12ff3afc3404d7614e060ac",
-                "reference": "7ba26afbeda954b0d12ff3afc3404d7614e060ac",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/fb188bfe352ccd7ecff06c08eca05fed47f30de4",
+                "reference": "fb188bfe352ccd7ecff06c08eca05fed47f30de4",
                 "shasum": ""
             },
             "require": {
@@ -1931,9 +1931,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/issues",
-                "source": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/tree/3.2.0"
+                "source": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/tree/3.2.1"
             },
-            "time": "2022-06-30T20:02:59+00:00"
+            "time": "2022-07-01T11:50:22+00:00"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -3737,12 +3737,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/BaseBundle.git",
-                "reference": "6b6bfe4c7416efb2c7af0f5d5f0224f5bbbc9f2a"
+                "reference": "47ca1598caaa07cd2eb98ddc53fd0c6438da0f39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/BaseBundle/zipball/6b6bfe4c7416efb2c7af0f5d5f0224f5bbbc9f2a",
-                "reference": "6b6bfe4c7416efb2c7af0f5d5f0224f5bbbc9f2a",
+                "url": "https://api.github.com/repos/survos/BaseBundle/zipball/47ca1598caaa07cd2eb98ddc53fd0c6438da0f39",
+                "reference": "47ca1598caaa07cd2eb98ddc53fd0c6438da0f39",
                 "shasum": ""
             },
             "require": {
@@ -3780,7 +3780,7 @@
             "require-dev": {
                 "doctrine/doctrine-fixtures-bundle": "^3.0",
                 "meyfa/php-svg": "^0.11.2",
-                "phpstan/phpstan": "^1.4",
+                "phpstan/phpstan": "^1.7",
                 "rector/rector": "^0.12.4",
                 "slevomat/coding-standard": "^7.0"
             },
@@ -3804,6 +3804,7 @@
                     "dev-master": "2.4-dev"
                 },
                 "symfony": {
+                    "require": "^6.1",
                     "allow-contrib": "true",
                     "id": "base-bundle.survos.com"
                 }
@@ -3826,8 +3827,8 @@
                 "test-cs": [
                     "vendor/bin/phpcs"
                 ],
-                "test-phpstan": [
-                    "vendor/bin/phpstan analyse"
+                "phpstan": [
+                    "bin/phpstan analyse"
                 ]
             },
             "license": [
@@ -3845,10 +3846,10 @@
                 "symfony5"
             ],
             "support": {
-                "source": "https://github.com/survos/BaseBundle/tree/master",
+                "source": "https://github.com/survos/BaseBundle/tree/2.4",
                 "issues": "https://github.com/survos/BaseBundle/issues"
             },
-            "time": "2022-06-29T21:33:52+00:00"
+            "time": "2022-07-01T09:46:41+00:00"
         },
         {
             "name": "survos/core-bundle",
@@ -3969,15 +3970,22 @@
         {
             "name": "survos/location-bundle",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/LocationBundle.git",
+                "reference": "512fb2bd1676e7d7a3e1412d0e54ccd09de38c23"
+            },
             "dist": {
-                "type": "path",
-                "url": "//home/tac/survos/bundles/location-bundle",
-                "reference": "858b4586b0c5579836c79dc73f5e9f22e24e7677"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/LocationBundle/zipball/512fb2bd1676e7d7a3e1412d0e54ccd09de38c23",
+                "reference": "512fb2bd1676e7d7a3e1412d0e54ccd09de38c23",
+                "shasum": ""
             },
             "require": {
                 "doctrine/persistence": "^3.0",
                 "php": ">=8.1",
                 "symfony/flex": "^2.0",
+                "symfony/form": ">=5.4",
                 "symfony/framework-bundle": ">=5.4",
                 "symfony/yaml": ">=5.4"
             },
@@ -3991,6 +3999,7 @@
                 "symfony/phpunit-bridge": ">=4.0",
                 "symplify/config-transformer": "^9.4"
             },
+            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -4005,17 +4014,7 @@
                     "/Tests/"
                 ]
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Survos\\LocationBundle\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "auto-scripts": {
-                    "cache:clear": "symfony-cmd",
-                    "assets:install %PUBLIC_DIR%": "symfony-cmd"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4031,9 +4030,11 @@
                 "city",
                 "state"
             ],
-            "transport-options": {
-                "relative": false
-            }
+            "support": {
+                "issues": "https://github.com/survos/LocationBundle/issues",
+                "source": "https://github.com/survos/LocationBundle/tree/v1.0.1-beta"
+            },
+            "time": "2022-07-01T12:54:09+00:00"
         },
         {
             "name": "symfony/asset",
@@ -8618,6 +8619,88 @@
             "time": "2022-05-27T16:55:36+00:00"
         },
         {
+            "name": "symfony/ux-autocomplete",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/ux-autocomplete.git",
+                "reference": "1de8059da736f2ae7b227475b2b8683515d695c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/ux-autocomplete/zipball/1de8059da736f2ae7b227475b2b8683515d695c1",
+                "reference": "1de8059da736f2ae7b227475b2b8683515d695c1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/http-foundation": "^5.4|^6.0",
+                "symfony/http-kernel": "^5.4|^6.0",
+                "symfony/string": "^5.4|^6.0"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "^2.0",
+                "doctrine/orm": "^2.7",
+                "mtdowling/jmespath.php": "2.6.x-dev",
+                "symfony/form": "^5.4|^6.0",
+                "symfony/framework-bundle": "^5.4|^6.0",
+                "symfony/maker-bundle": "^1.40",
+                "symfony/phpunit-bridge": "^5.4|^6.0",
+                "symfony/process": "^5.4|^6.0",
+                "symfony/security-bundle": "^5.4|^6.0",
+                "symfony/security-csrf": "^5.4|^6.0",
+                "symfony/twig-bundle": "^5.4|^6.0",
+                "zenstruck/browser": "^1.1",
+                "zenstruck/foundry": "^1.19"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "thanks": {
+                    "name": "symfony/ux",
+                    "url": "https://github.com/symfony/ux"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\UX\\Autocomplete\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "JavaScript Autocomplete functionality for Symfony",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "symfony-ux"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/ux-autocomplete/tree/v2.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-06-15T21:31:16+00:00"
+        },
+        {
             "name": "symfony/ux-twig-component",
             "version": "v2.2.0",
             "source": {
@@ -10894,12 +10977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "e4686081a57458b8ce02a2a407c41eb3f3a3fe08"
+                "reference": "9b93bb7c428af0cc6a58d9debb44a154e214d83c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/e4686081a57458b8ce02a2a407c41eb3f3a3fe08",
-                "reference": "e4686081a57458b8ce02a2a407c41eb3f3a3fe08",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/9b93bb7c428af0cc6a58d9debb44a154e214d83c",
+                "reference": "9b93bb7c428af0cc6a58d9debb44a154e214d83c",
                 "shasum": ""
             },
             "require": {
@@ -10947,7 +11030,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-30T14:09:44+00:00"
+            "time": "2022-07-01T07:44:56+00:00"
         },
         {
             "name": "sebastian/cli-parser",

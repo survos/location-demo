@@ -74,7 +74,7 @@ class AppController extends AbstractController
         dd($geoName);
     }
 
-    #[Route(path: '/location-json.{_format}', name: 'location_json', defaults: ['_format' => 'html'])]
+    #[Route(path: '/app-location-json.{_format}', name: 'app_location_json', defaults: ['_format' => 'html'])]
     public function locationJson(Request $request)
     {
 //        $repo = $this->entityManager->getRepository(Location::class);

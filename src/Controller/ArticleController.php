@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Entity\Article;
 use App\Form\ArticleType;
@@ -14,6 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route(path: '/article')]
 class ArticleController extends AbstractController
 {
+    public function __construct(private EntityManagerInterface $entityManager) {
+
+    }
     #[Route(path: '/', name: 'article_index', methods: ['GET'])]
     public function index(ArticleRepository $articleRepository) : Response
     {
@@ -25,11 +29,11 @@ class ArticleController extends AbstractController
     public function new(Request $request) : Response
     {
         $article = new Article();
-        $article->setCountries(['AB', 'CA']);
+//        $article->setCountries(['AB', 'CA']);
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->entityManager;
             $entityManager->persist($article);
             $entityManager->flush();
 
@@ -53,7 +57,7 @@ class ArticleController extends AbstractController
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('article_index');
         }

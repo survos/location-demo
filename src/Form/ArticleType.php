@@ -6,6 +6,7 @@ use App\Entity\Article;
 use Bordeux\Bundle\GeoNameBundle\Entity\GeoName;
 use Doctrine\ORM\QueryBuilder;
 use Survos\LocationBundle\Entity\Location;
+use Survos\LocationBundle\Form\LocationAutocompleteField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -20,7 +21,7 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title');
-        if (0)
+//        if (0)
             $builder
             ->add('title')
             ->add('locationScope', ChoiceType::class, [
@@ -47,7 +48,7 @@ class ArticleType extends AbstractType
                 'label' => Location::class,
                 'mapped' => false,
                 'multiple' => false,
-                'remote_route' => 'location_json',
+                'remote_route' => 'survos_location_json',
                 'remote_params' => ['lvl' => 0],
                 'class' => Location::class,
                 'primary_key' => 'code',
@@ -64,10 +65,14 @@ class ArticleType extends AbstractType
                 'placeholder' => 'Level 0, not mapped.',
         ]);
 
+            // https://stackoverflow.com/questions/62649386/argument-1-passed-to-symfony-bridge-doctrine-form-choicelist-idreadergetidvalu
+//            $builder
+//                ->add('locations', LocationAutocompleteField::class);
+
             foreach (['locations' => null, 'countries' => 1, 'states' => 2, 'cities' => 3] as $var => $lvl) {
                 $builder
                     ->add($var, Select2EntityType::class, [
-                            'remote_route' => 'location_json',
+                            'remote_route' => 'survos_location_json',
                             'remote_params' => ['lvl' => $lvl],
 
                             'transformer' => SelectLocationsTransformer::class,

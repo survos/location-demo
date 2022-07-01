@@ -11,10 +11,12 @@
             lvl: lvl
         },
         columns: [
-            'id',
+            {name: 'code', title: 'Unique'},
+            'countryCode',
+            lvl > 1 ? 'stateCode' : null,
             'name',
+            'childCount',
             'lvl',
-            'code'
         ]
     } %}
 

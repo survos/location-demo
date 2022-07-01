@@ -11,4 +11,4 @@ twig:
   globals:
     theme: adminlte
   paths:
-    'vendor/survos/base-bundle/src/Resources/views/adminlte': 'theme'
+    'vendor/survos/base-bundle/templates/adminlte': 'theme'
