@@ -26,6 +26,12 @@ class SidebarMenuSubscriber extends BaseMenuSubscriber implements EventSubscribe
         $this->addMenuItem($menu, ['route' => 'app_homepage']);
         $this->addMenuItem($menu, ['route' => 'article_index']);
         $this->addMenuItem($menu, ['route' => 'article_new']);
+        $locMenu = $this->addMenuItem($menu, ['label' => 'Locations']);
+        foreach (['all', 'country', 'state', 'city'] as $idx => $name) {
+            $this->addMenuItem($locMenu, ['label' => $name, 'route' => 'bundle_location_browse', 'rp' => ['lvl' => $idx]]);
+        }
+
+
 //        $this->addMenuItem($menu, ['route' => 'app_html_tree']);
         $this->addMenuItem($menu, ['route' => 'app_typography']);
 //        $this->addMenuItem($menu, ['route' => 'app_heroku']);
