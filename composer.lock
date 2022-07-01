@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e9b5e6b4f295accbfc10a2eadcf43f4",
+    "content-hash": "a577d618bc9bb8f9c435ad88582ef4bb",
     "packages": [
         {
             "name": "api-platform/core",
@@ -10987,12 +10987,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "84dff4485c13bd495f6b8663a9c21105718498a7"
+                "reference": "7b91c0386b788020c3b129af56d10b9bade8daea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/84dff4485c13bd495f6b8663a9c21105718498a7",
-                "reference": "84dff4485c13bd495f6b8663a9c21105718498a7",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/7b91c0386b788020c3b129af56d10b9bade8daea",
+                "reference": "7b91c0386b788020c3b129af56d10b9bade8daea",
                 "shasum": ""
             },
             "require": {
@@ -11040,7 +11040,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-01T13:50:24+00:00"
+            "time": "2022-07-01T14:24:55+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -12517,6 +12517,7 @@
         "ext-iconv": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
+        "ext-intl": "*",
         "ext-zip": "*"
     },
     "platform-dev": [],
