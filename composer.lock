@@ -3973,12 +3973,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/LocationBundle.git",
-                "reference": "512fb2bd1676e7d7a3e1412d0e54ccd09de38c23"
+                "reference": "ba76727c6acda7225c99d1970745c27262688817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/LocationBundle/zipball/512fb2bd1676e7d7a3e1412d0e54ccd09de38c23",
-                "reference": "512fb2bd1676e7d7a3e1412d0e54ccd09de38c23",
+                "url": "https://api.github.com/repos/survos/LocationBundle/zipball/ba76727c6acda7225c99d1970745c27262688817",
+                "reference": "ba76727c6acda7225c99d1970745c27262688817",
                 "shasum": ""
             },
             "require": {
@@ -4032,9 +4032,9 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/LocationBundle/issues",
-                "source": "https://github.com/survos/LocationBundle/tree/v1.0.1-beta"
+                "source": "https://github.com/survos/LocationBundle/tree/main"
             },
-            "time": "2022-07-01T12:54:09+00:00"
+            "time": "2022-07-01T13:04:13+00:00"
         },
         {
             "name": "symfony/asset",
