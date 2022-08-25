@@ -3,9 +3,9 @@
 
 namespace App\Form;
 
-use App\Entity\Location;
 use Doctrine\Persistence\ObjectManager;
 use phpDocumentor\Reflection\Types\Parent_;
+use Survos\LocationBundle\Entity\Location;
 use Tetranz\Select2EntityBundle\Form\DataTransformer\EntitiesToPropertyTransformer;
 
 /**

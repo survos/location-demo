@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
+                <th>Slug</th>
                 <th>Locations</th>
                 <th>Countries</th>
                 <th>States</th>
@@ -22,6 +23,7 @@
             <tr>
                 <td>{{ article.id }}</td>
                 <td>{{ article.title }}</td>
+                <td>{{ article.slug }}</td>
                 <td>{{ article.locations ? article.locations|join(', ') : '' }}</td>
                 <td>{{ article.countries ? article.countries|join(', ') : '' }}</td>
                 <td>{{ article.states ? article.states|join(', ') : '' }}</td>

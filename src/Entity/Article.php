@@ -17,7 +17,7 @@ class Article
     private ?int $id = null;
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
+     * @ORM\Column(type="string", length=80, nullable=false)
      */
     private ?string $title = null;
 
@@ -49,6 +49,11 @@ class Article
      * @ORM\Column(type="integer", nullable=true)
      */
     private ?int $locationScope = null;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private ?string $slug=null;
 
     public function getId(): ?int
     {
@@ -127,6 +132,18 @@ class Article
     public function setLocationScope(?int $locationScope): self
     {
         $this->locationScope = $locationScope;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

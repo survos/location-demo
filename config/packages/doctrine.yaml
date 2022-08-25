@@ -15,8 +15,6 @@ doctrine:
                 # schema_filter: ~^(?!geo__)~
                 url: '%env(resolve:DATABASE_GEONAMES_URL)%'
             location:
-                # configure these for your database server
-                # schema_filter: ~^(?!geo__)~
                 url: '%env(resolve:DATABASE_LOCATIONS_URL)%'
 
     orm:

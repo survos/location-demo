@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Post;
 use Bordeux\Bundle\GeoNameBundle\Entity\GeoName;
 use Doctrine\ORM\QueryBuilder;
 use Survos\LocationBundle\Entity\Location;
@@ -11,18 +12,23 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Tetranz\Select2EntityBundle\Form\Type\Select2EntityType;
 
 class ArticleType extends AbstractType
 {
+    public function __construct(
+        private SluggerInterface $slugger
+    ) {
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title');
-//        if (0)
-            $builder
             ->add('title')
             ->add('locationScope', ChoiceType::class, [
                 'label' => 'Geographic Scope',
@@ -85,6 +91,15 @@ class ArticleType extends AbstractType
                         ]
                     );
             }
+            $builder
+                ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
+                    /** @var Article */
+                    $article = $event->getData();
+                    if (null === $article->getSlug() && null !== $article->getTitle()) {
+                        $article->setSlug($this->slugger->slug($article->getTitle())->lower());
+                    }
+                });
+
 
 //        $builder
 //            ->add('states', Select2EntityType::class, [
