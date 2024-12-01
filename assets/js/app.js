@@ -2,6 +2,8 @@ const $ = require('jquery');
 window.jQuery = window.$ = global.jQuery = global.$ = $;
 
 require('bootstrap');
+require('../js/us-states');
+require('datamaps/dist/datamaps.world.min');
 require('@popperjs/core');
 require('../../vendor/survos/base-bundle/assets/js/adminlte');
 require('../../vendor/tetranz/select2entity-bundle/Resources/public/js/select2entity.js');
