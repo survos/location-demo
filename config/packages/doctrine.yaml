@@ -27,13 +27,14 @@ doctrine:
                 auto_mapping: false
                 mappings:
 #                    gedmo_tree:
-#                        type: attribute
+#                        type: annotation
 #                        prefix: Gedmo\Tree\Entity
 #                        dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Tree/Entity"
 #                        alias: GedmoTree # (optional) it will default to the name set for the mapping
 #                        is_bundle: false
                     App:
                         is_bundle: false
+                        type: attribute
                         dir: '%kernel.project_dir%/src/Entity'
                         prefix: 'App\Entity'
                         alias: App
@@ -44,7 +45,7 @@ doctrine:
 #                    BordeuxGeoNameBundle:
 #                        is_bundle: true
 #                        dir: 'Entity'
-#                        type: attribute
+#                        type: annotation
 #                        # dir: "%kernel.project_dir%/vendor/bordeux/geoname-bundle/Entity"
 #                        prefix: 'Bordeux\Bundle\GeoNameBundle\Entity'
 #                        # alias: Geonames
@@ -57,28 +58,3 @@ doctrine:
                         dir: 'Entity'
                         # dir: "%kernel.project_dir%/vendor/bordeux/geoname-bundle/Entity"
                         prefix: 'Survos\LocationBundle\Entity'
-
-                    gedmo_translatable:
-                        type: attribute
-                        prefix: Gedmo\Translatable\Entity
-                        dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Translatable/Entity"
-                        alias: GedmoTranslatable # (optional) it will default to the name set for the mapping
-                        is_bundle: false
-                    gedmo_translator:
-                        type: attribute
-                        prefix: Gedmo\Translator\Entity
-                        dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Translator/Entity"
-                        alias: GedmoTranslator # (optional) it will default to the name set for the mapping
-                        is_bundle: false
-                    gedmo_loggable:
-                        type: attribute
-                        prefix: Gedmo\Loggable\Entity
-                        dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Loggable/Entity"
-                        alias: GedmoLoggable # (optional) it will default to the name set for the mapping
-                        is_bundle: false
-                    gedmo_tree:
-                        type: attribute
-                        prefix: Gedmo\Tree\Entity
-                        dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Tree/Entity"
-                        alias: GedmoTree # (optional) it will default to the name set for the mapping
-                        is_bundle: false

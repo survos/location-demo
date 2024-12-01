@@ -2,14 +2,40 @@
 
 {% block title %}Hello AppController!{% endblock %}
 
-{% block body %}
+{% block javascripts %}
+{{ parent() }}
+{#    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>#}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .map { width: 600px; height: 250px; }
+    /*.info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }*/
+    /*.legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }*/
+
 </style>
+{% endblock %}
+{% block body %}
+
+
+    <div id="container" style="position: relative; width: 500px; height: 300px;"></div>
+{#    <script src="node_modules/datamaps/dist/datamaps.world.min.js"></script>#}
 
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
+
+{#    <div id="container" style="position: relative; width: 500px; height: 300px;"></div>#}
+
+    {% set _sc = 'map' %}
+    <div  id="map" class="map" {{ stimulus_controller(_sc, {
+        stateData: []
+    })  }}>
+        <div {{ stimulus_target(_sc, 'map') }}>
+            Map goes here.
+        </div>
+</div>
 
     <h3>Administrative Location Data</h3>
 
