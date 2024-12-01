@@ -4,55 +4,45 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
- */
+#[ORM\Entity(repositoryClass: \App\Repository\ArticleRepository::class)]
 class Article
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=80, nullable=false)
-     */
+    #[ORM\Column(type: 'string', length: 80, nullable: false)]
     private ?string $title = null;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
      * @var mixed|mixed[]|null
      */
+    #[ORM\Column(type: 'array', nullable: true)]
     private $locations = [];
 
     /**
-     * @ORM\Column(type="array", nullable=true)
      * @var mixed|mixed[]|null
      */
+    #[ORM\Column(type: 'array', nullable: true)]
     private $countries = [];
 
     /**
-     * @ORM\Column(type="array", nullable=true)
      * @var mixed|mixed[]|null
      */
+    #[ORM\Column(type: 'array', nullable: true)]
     private $states = [];
 
     /**
-     * @ORM\Column(type="array", nullable=true)
      * @var mixed|mixed[]|null
      */
+    #[ORM\Column(type: 'array', nullable: true)]
     private $cities = [];
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
+    #[ORM\Column(type: 'integer', nullable: true)]
     private ?int $locationScope = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $slug=null;
 
     public function getId(): ?int

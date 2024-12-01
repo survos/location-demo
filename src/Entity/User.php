@@ -6,31 +6,25 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- */
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[ORM\Entity(repositoryClass: \App\Repository\UserRepository::class)]
 class User implements UserInterface
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
     private ?string $email = null;
     /**
-     * @ORM\Column(type="json")
      * @var mixed|mixed[]
      */
+    #[ORM\Column(type: 'json')]
     private $roles = [];
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
      */
+    #[ORM\Column(type: 'string')]
     private ?string $password = null;
     public function getId(): ?int
     {
