@@ -69,7 +69,6 @@ The next part is somewhat inelegant.  We're going to leverage the doctrine tree 
         auto_mapping: true
         mappings:
             gedmo_tree: # enable tree
-                type: annotation
                 prefix: Gedmo\Tree\Entity
                 dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
                 alias: GedmoTree # (optional) it will default to the name set for the mapping

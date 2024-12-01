@@ -4,31 +4,21 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\CountryRepository")
- */
+#[ORM\Entity(repositoryClass: \App\Repository\CountryRepository::class)]
 class Country
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string", length=2)
-     */
+    #[ORM\Column(type: 'string', length: 2)]
     private ?string $code = null;
 
-    /**
-     * @ORM\Column(type="string", length=2)
-     */
+    #[ORM\Column(type: 'string', length: 2)]
     private ?string $alpha2 = null;
 
     public function getId(): ?int

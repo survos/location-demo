@@ -391,6 +391,9 @@
     "survos/base-bundle": {
         "version": "1.x-dev"
     },
+    "survos/bootstrap-bundle": {
+        "version": "1.5.241"
+    },
     "survos/core-bundle": {
         "version": "1.0.7"
     },
@@ -673,6 +676,20 @@
     "symfony/service-contracts": {
         "version": "v2.0.1"
     },
+    "symfony/stimulus-bundle": {
+        "version": "2.9999999",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.13",
+            "ref": "6acd9ff4f7fd5626d2962109bd4ebab351d43c43"
+        },
+        "files": [
+            "assets/bootstrap.js",
+            "assets/controllers.json",
+            "assets/controllers/hello_controller.js"
+        ]
+    },
     "symfony/stopwatch": {
         "version": "v5.0.5"
     },
@@ -710,18 +727,6 @@
             "config/packages/test/twig.yaml",
             "config/packages/twig.yaml",
             "templates/base.html.twig"
-        ]
-    },
-    "symfony/ux-autocomplete": {
-        "version": "2.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "2.2",
-            "ref": "f8fa49e4547904ab278c100564ae1102df774243"
-        },
-        "files": [
-            "config/routes/ux_autocomplete.yaml"
         ]
     },
     "symfony/ux-twig-component": {
